@@ -17,7 +17,7 @@ const Signin = () => {
       pass: "busy@123",
     };
     if (email == admin.email && pass == admin.pass) {
-      navigate("/dashboard/summery");
+      navigate("/dashboard/summery?login=success");
     } else {
       toast.error("🦄 wrong pass and email", {
         position: "top-right",

@@ -71,7 +71,6 @@ const Dashbord = () => {
   ];
   return (
     <>
-      <ToastContainer></ToastContainer>
       <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center overflow-y-hidden ">
         <Navbar></Navbar>
         <div className="w-full flex">
