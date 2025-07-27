@@ -13,8 +13,8 @@ const Signin = () => {
 
   const login = (e) => {
     const admin = {
-      email: "aakash@busybox.in",
-      pass: "Aakash@123",
+      email: "Aman@busybox.in",
+      pass: "busy@123",
     };
     if (email == admin.email && pass == admin.pass) {
       navigate("/dashboard/summery");
