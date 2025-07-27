@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="w-[100%] bg-sky-100 h-[40px] flex justify-between px-[12px] items-center mt-[20px]">
-      <img className="h-[45px]" src={busybox} alt="" />
+      <img className="sm:h-[45px] h-[30px]" src={busybox} alt="" />
 
       <div className="flex items-center gap-[20px]">
         <Link to={"/dashboard/addmoney"}>
