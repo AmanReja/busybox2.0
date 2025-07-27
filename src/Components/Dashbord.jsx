@@ -74,7 +74,7 @@ const Dashbord = () => {
       <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
         <div className="w-full flex-col sm:flex-row flex">
-          <div className="flex flex-row  sm:w-[5%] sm:flex-col sm:justify-normal justify-center items-center gap-[15px]  sm:gap-[20px] w-full">
+          <div className="flex flex-row h-[90px] sm:w-[5%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[15px]  sm:gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
@@ -102,8 +102,8 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
-            <header className="w-full sm:h-[54px] h-[70px] border-b-[1px] border-gray-300">
+          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] sm:h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
+            <header className="w-full sm:h-[54px] h-[90px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
                 className="w-full h-full flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-8 px-4 py-2 text-sm whitespace-nowrap"

@@ -32,7 +32,7 @@ const Summery = () => {
     <>
       <ToastContainer></ToastContainer>
       <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-        <main className="w-full border h-[546px] flex flex-col overflow-y-scroll">
+        <main className="w-full  h-[] sm:h-[546px] flex flex-col overflow-y-scroll">
           <div className="w-full sm:h-[50px] h-[90px] sm:flex-row flex-col px-[20px] flex items-center justify-between mt-[2px] sm:mt-[30px] ">
             <h1 className="text-[23px] font-semibold">Dashboard Summary</h1>
             <div className="h-full w-full sm:w-[360px] gap-[10px] flex">
@@ -82,8 +82,8 @@ const Summery = () => {
               </div>
             </div>
           </div>
-          <section className="w-full flex  gap-[20px]  min-h-[400px] h-[400px]  px-[20px]">
-            <div className="flex w-[35%] h-full">
+          <section className="w-full flex flex-col sm:flex-row  gap-[20px]  sm:min-h-[400px] sm:h-[400px]  px-[20px]">
+            <div className="flex w-full z-0 sm:w-[35%] h-full">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-4 ">
                 <div className="flex flex-col items-center justify-between shadow-sky-200 rounded-xl p-4 bg-white  shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
@@ -129,8 +129,8 @@ const Summery = () => {
               </div>
             </div>
 
-            <div className="flex w-[65%] h-[100%]  flex-col justify-center items-center">
-              <header className="w-full h-[15%] flex  justify-around items-center border border-gray-300 rounded-tl-2xl rounded-tr-2xl">
+            <div className="flex w-full sm:w-[65%] h-[100%]  flex-col justify-center items-center">
+              <header className="w-full h-[18%] flex  justify-around items-center border border-gray-300 rounded-tl-2xl rounded-tr-2xl">
                 <h1 className="text-[22px]">Earnings</h1>
                 <select className=" border-gray-300 rounded-[8px] w-[130px] outline-none px-[20px] border py-[3px]">
                   <option value="1 month">1 month</option>
@@ -141,7 +141,7 @@ const Summery = () => {
                   </option>
                 </select>
               </header>
-              <div className=" shadow-xl shadow-sky-100 h-[90%] p-2 border w-full border-gray-300 flex justify-center items-center">
+              <div className=" shadow-xl shadow-sky-100 h-[80%] px-[5px]  border w-full border-gray-300 flex justify-center items-center">
                 <Chart></Chart>
               </div>
             </div>

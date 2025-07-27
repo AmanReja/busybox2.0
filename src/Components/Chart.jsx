@@ -73,7 +73,7 @@ const Chart = () => {
         options={options}
         series={series}
         type="line"
-        height={350}
+        height={320}
       />
     </div>
   );
