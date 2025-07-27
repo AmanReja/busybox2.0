@@ -71,7 +71,7 @@ const Dashbord = () => {
   ];
   return (
     <>
-      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center overflow-y-hidden overflow-x-hidden ">
+      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
         <div className="w-full flex-col sm:flex-row flex">
           <div className="flex flex-row  sm:w-[5%] sm:flex-col items-center gap-[20px] w-full">
@@ -100,7 +100,7 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-1 w-full border sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
+          <div className="ml-1 w-full sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
             <header className="w-full sm:h-[54px] h-[70px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
