@@ -74,7 +74,7 @@ const Dashbord = () => {
       <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
         <div className="w-full flex-col sm:flex-row flex">
-          <div className="flex flex-row  sm:w-[5%] sm:flex-col items-center gap-[20px] w-full">
+          <div className="flex flex-row  sm:w-[5%] sm:flex-col sm:justify-normal justify-center items-center gap-[15px]  sm:gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
@@ -88,9 +88,11 @@ const Dashbord = () => {
                   }`
                 }
               >
-                <i className={`fa-solid ${icon} text-[18px] text-gray-500`}></i>
+                <i
+                  className={`fa-solid ${icon} sm:text-[18px] text-[12px] text-gray-500`}
+                ></i>
                 <div
-                  className={`absolute left-[120%] top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded shadow-md transition duration-200 whitespace-nowrap ${
+                  className={`absolute sm:block hidden left-[120%] top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded shadow-md transition duration-200 whitespace-nowrap ${
                     show ? "visible" : "invisible"
                   }`}
                 >
