@@ -130,7 +130,7 @@ const Summery = () => {
             </div>
 
             <div className="flex w-full sm:w-[65%] h-[100%]  flex-col justify-center items-center">
-              <header className="w-full h-[18%] flex  justify-around items-center border border-gray-300 rounded-tl-2xl rounded-tr-2xl">
+              <header className="w-full h-[18%] flex  justify-around items-center border-l-[1px] border-r-[1px] border-t-[1px]  border-gray-300 rounded-tl-2xl rounded-tr-2xl">
                 <h1 className="text-[22px]">Earnings</h1>
                 <select className=" border-gray-300 rounded-[8px] w-[130px] outline-none px-[20px] border py-[3px]">
                   <option value="1 month">1 month</option>

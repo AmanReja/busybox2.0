@@ -86,12 +86,11 @@ const Addmoney = () => {
     },
   ];
   return (
-    <div className="w-full rounded-2xl h-auto flex flex-col">
-      <main className="w-full flex flex-col overflow-y-scroll">
-        <section className="w-full flex flex-col lg:flex-row gap-5 mt-5 px-4">
-          <div className="w-full flex flex-col lg:flex-row gap-5 bg-white p-5 rounded-xl">
-            {/* Form Section */}
-            <form className="w-full lg:w-1/3 flex flex-col gap-4 rounded-xl bg-white shadow p-6">
+    <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
+      <main className="w-full h-[546px] flex flex-col overflow-y-scroll">
+        <section className="w-full flex gap-5 min-h-[500px] h-[500px] mt-5 px-5">
+          <div className="w-full flex gap-5 bg-white p-5 rounded-xl ">
+            <form className="w-1/3 flex flex-col gap-4 rounded-xl bg-white shadow p-6">
               <h2 className="text-2xl font-semibold text-gray-800">
                 Add Money
               </h2>
@@ -122,7 +121,7 @@ const Addmoney = () => {
                 />
               </div>
 
-              <div className="flex justify-between text-sm text-gray-700 flex-wrap gap-y-2">
+              <div className="flex justify-between text-sm text-gray-700">
                 {["IMPS", "NEFT", "RTGS"].map((method) => (
                   <div key={method} className="flex items-center gap-2">
                     <input
@@ -148,9 +147,8 @@ const Addmoney = () => {
               </button>
             </form>
 
-            {/* Balance + Account Section */}
-            <div className="w-full lg:w-2/3 flex flex-col gap-5">
-              <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 min-h-[120px]">
+            <div className="w-2/5 flex flex-col gap-5">
+              <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 h-[120px]">
                 <div className="flex items-center gap-3">
                   <i className="fa-solid fa-credit-card text-blue-600 text-xl"></i>
                   <div>
@@ -165,7 +163,7 @@ const Addmoney = () => {
                 </h1>
               </div>
 
-              <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 min-h-[120px]">
+              <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 h-[120px]">
                 <div className="flex items-center gap-3">
                   <i className="fa-solid fa-wallet text-blue-600 text-xl"></i>
                   <div>
@@ -183,37 +181,43 @@ const Addmoney = () => {
                   Account Details
                 </h1>
                 <div className="w-full border border-gray-300 rounded-lg overflow-hidden text-sm text-gray-700">
-                  {[
-                    ["Account Name:", "Aakash"],
-                    ["A/C No:", "BB559900000036"],
-                    ["IFSC Code:", "HDFC0000060"],
-                    ["Bank Name:", "HDFC Bank Ltd"],
-                  ].map(([label, value], idx) => (
-                    <div
-                      key={idx}
-                      className={`grid grid-cols-2 px-4 py-2 ${
-                        idx !== 3 ? "border-b border-gray-300" : ""
-                      }`}
-                    >
-                      <p className="font-medium text-gray-600">{label}</p>
-                      <p className="text-right font-semibold text-gray-800">
-                        {value}
-                      </p>
-                    </div>
-                  ))}
+                  {/* Table Row */}
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">Account Name:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                      Aakash
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">A/C No:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                      BB559900000036
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">IFSC Code:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                      HDFC0000060
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 px-4 py-2">
+                    <p className="font-medium text-gray-600">Bank Name:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                      HDFC Bank Ltd
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Transaction Table */}
-        <div className="w-full px-4 mt-5">
-          <div className="flex w-full h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-x-auto">
+        <div className="w-full px-[20px] mt-[20px]">
+          <div className="flex w-[100%] h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-y-auto">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Last 10 Transactions
             </h2>
-            <table className="min-w-[600px] w-full text-sm text-left text-gray-600">
+            <table className="w-full text-sm text-left text-gray-600">
               <thead className="text-xs text-gray-700 uppercase border-b border-gray-300">
                 <tr>
                   <th className="px-4 py-2">#Status</th>
@@ -255,17 +259,16 @@ const Addmoney = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="w-full min-h-[60px] flex px-4 justify-between items-center mt-4 flex-wrap gap-2 text-sm">
-          <h1 className="text-gray-500">2024© Busybox.</h1>
+        <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
+          <h1 className="text-gray-500 text-[14px]">2024© Busybox.</h1>
           <div
             style={{ fontFamily: "montserrat" }}
-            className="flex flex-wrap gap-4 text-gray-500"
+            className="flex min-w-[235px] text-[14px] w-[235px] h-full items-center gap-[10px] text-gray-500 justify-between"
           >
-            <a href="#">Docs</a>
-            <a href="#">FAQ</a>
-            <a href="#">Support</a>
-            <a href="#">License</a>
+            <a href="">Docs</a>
+            <a href="">FAQ</a>
+            <a href="">Support</a>
+            <a href="">License</a>
           </div>
         </footer>
       </main>
