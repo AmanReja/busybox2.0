@@ -87,11 +87,11 @@ const Payout = () => {
     },
   ];
   return (
-    <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-      <main className="w-full h-[546px] flex flex-col overflow-y-scroll">
-        <section className="w-full flex gap-[20px] min-h-[500px] h-[500px] mt-[20px] px-[20px]">
-          <div className="flex w-[35%] h-full bg-white rounded-xl shadow-md p-5">
-            <form className="flex flex-col gap-4 w-full  px-[20px]">
+    <div className="w-full rounded-2xl min-h-[600px] flex flex-col">
+      <main className="w-full min-h-[546px] flex flex-col overflow-y-scroll">
+        <section className="w-full flex flex-col lg:flex-row gap-[20px] min-h-[500px] mt-[20px] px-[20px]">
+          <div className="flex w-full lg:w-[35%] h-full bg-white rounded-xl shadow-md p-5">
+            <form className="flex flex-col gap-4 w-full px-[20px]">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 Single Payout Transaction
               </h2>
@@ -119,6 +119,7 @@ const Payout = () => {
                   placeholder="IFSC Code"
                 />
               </div>
+
               <div className="flex flex-col">
                 <input
                   type="text"
@@ -126,17 +127,16 @@ const Payout = () => {
                   placeholder="Beneficiary Name"
                 />
               </div>
-              <div className="flex justify-between w-full">
+
+              <div className="flex justify-between w-full flex-wrap gap-2">
                 <div className="flex items-center gap-[5px]">
                   <input
                     id="imbs"
                     name="type"
-                    className="w-[25px] h-[25px] checked:text-blue-400"
+                    className="w-[25px] h-[25px]"
                     type="radio"
                   />
-                  <label className="custom-radio" htmlFor="imbs">
-                    IMPS
-                  </label>
+                  <label htmlFor="imbs">IMPS</label>
                 </div>
                 <div className="flex items-center gap-[5px]">
                   <input
@@ -157,9 +157,11 @@ const Payout = () => {
                   <label htmlFor="rtgs">RTGS</label>
                 </div>
               </div>
+
               <p className="w-full text-[12px]">
                 Note: Max ₹5 lakh per transaction, real-time credit, works 24x7.
               </p>
+
               <div className="flex flex-col">
                 <input
                   type="text"
@@ -177,58 +179,59 @@ const Payout = () => {
             </form>
           </div>
 
-          <div className="flex w-[65%] h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-y-auto">
+          <div className="flex w-full lg:w-[65%] h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-y-auto">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Last 10 Transactions
             </h2>
-            <table className="w-full text-sm text-left text-gray-600">
-              <thead className="text-xs text-gray-700 uppercase border-b border-gray-300">
-                <tr>
-                  <th className="px-4 py-2">#Status</th>
-                  <th className="px-4 py-2">Txn Date</th>
-                  <th className="px-4 py-2">UTR</th>
-                  <th className="px-4 py-2">Account Details</th>
-                  <th className="px-4 py-2">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {transactions.map((txn, i) => (
-                  <tr
-                    key={i}
-                    className="border-b border-gray-100 hover:bg-gray-50"
-                  >
-                    <td className="px-4 py-2">
-                      <span
-                        className={`text-white rounded-[2px] p-1 text-[10px] ${
-                          txn.status === "Success"
-                            ? "bg-green-500"
-                            : txn.status === "Pending"
-                            ? "bg-yellow-500"
-                            : "bg-red-500"
-                        }`}
-                      >
-                        {txn.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-2">{txn.date}</td>
-                    <td className="px-4 py-2">{txn.utr}</td>
-                    <td className="px-4 py-2">{txn.account}</td>
-                    <td className="px-4 py-2">
-                      ₹{txn.amount.toLocaleString()}
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left text-gray-600">
+                <thead className="text-xs text-gray-700 uppercase border-b border-gray-300">
+                  <tr>
+                    <th className="px-4 py-2">#Status</th>
+                    <th className="px-4 py-2">Txn Date</th>
+                    <th className="px-4 py-2">UTR</th>
+                    <th className="px-4 py-2">Account Details</th>
+                    <th className="px-4 py-2">Amount</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {transactions.map((txn, i) => (
+                    <tr
+                      key={i}
+                      className="border-b border-gray-100 hover:bg-gray-50"
+                    >
+                      <td className="px-4 py-2">
+                        <span
+                          className={`text-white rounded-[2px] p-1 text-[10px] ${
+                            txn.status === "Success"
+                              ? "bg-green-500"
+                              : txn.status === "Pending"
+                              ? "bg-yellow-500"
+                              : "bg-red-500"
+                          }`}
+                        >
+                          {txn.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-2">{txn.date}</td>
+                      <td className="px-4 py-2">{txn.utr}</td>
+                      <td className="px-4 py-2">{txn.account}</td>
+                      <td className="px-4 py-2">
+                        ₹{txn.amount.toLocaleString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        {/* Footer remains unchanged */}
-        <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
+        <footer className="w-full min-h-[60px] flex flex-col sm:flex-row px-[20px] justify-between items-center mt-4 gap-3 sm:gap-0">
           <h1 className="text-gray-500 text-[14px]">2024© Busybox.</h1>
           <div
             style={{ fontFamily: "montserrat" }}
-            className="flex min-w-[235px] text-[14px] w-[235px] h-full items-center gap-[10px] text-gray-500 justify-between"
+            className="flex flex-wrap justify-center gap-[10px] text-[14px] text-gray-500"
           >
             <a href="">Docs</a>
             <a href="">FAQ</a>
