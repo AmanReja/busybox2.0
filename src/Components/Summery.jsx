@@ -32,10 +32,10 @@ const Summery = () => {
     <>
       <ToastContainer></ToastContainer>
       <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-        <main className="w-full h-[546px] flex flex-col overflow-y-scroll">
-          <div className="w-full h-[50px] px-[20px] flex items-center justify-between mt-[30px] ">
+        <main className="w-full border h-[546px] flex flex-col overflow-y-scroll">
+          <div className="w-full sm:h-[50px] h-[90px] sm:flex-row flex-col px-[20px] flex items-center justify-between mt-[2px] sm:mt-[30px] ">
             <h1 className="text-[23px] font-semibold">Dashboard Summary</h1>
-            <div className="h-full w-[360px] gap-[10px] flex">
+            <div className="h-full w-full sm:w-[360px] gap-[10px] flex">
               <div className="border-dashed rounded flex flex-col w-[105px] border-gray-400 border-[1px] text-center gap-[2px] p-[5px]">
                 <p className="text-[12px]  font-semibold">₹ 105591.682</p>
                 <p className="text-[12px] font-normal text-gray-500">
@@ -55,7 +55,7 @@ const Summery = () => {
             </div>
           </div>
           <div className="w-full h-[276px]  mt-[5px] p-2 px-[20px]">
-            <div className="bg-gradient-to-r hover:translate-y-[-5px] duration-300 from-violet-500  to-indigo-500  text-white p-8 rounded-lg shadow-lg w-[390px] h-full">
+            <div className="bg-gradient-to-r hover:translate-y-[-5px] duration-300 from-violet-500  to-indigo-500  text-white p-8 rounded-lg shadow-lg w-full sm:w-[390px] h-full">
               <div className="w-full h-[60px] font-semibold mb-4 flex items-center gap-[20px]">
                 <div className=" w-[70%]">
                   <h1 className="text-[20px]">Virtual Account</h1>
