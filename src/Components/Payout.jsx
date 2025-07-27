@@ -89,9 +89,9 @@ const Payout = () => {
   return (
     <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
       <main className="w-full   sm:h-[546px] flex flex-col overflow-y-scroll">
-        <section className="w-full flex flex-col sm:flex-row  gap-[20px]  sm:min-h-[600px] sm:h-[600px]  px-[20px]">
+        <section className="w-full flex flex-col sm:flex-row  gap-[20px]  sm:min-h-[600px] sm:h-[600px] px-[2px] sm:px-[20px]">
           <div className="flex w-full  sm:w-[35%] h-full bg-white rounded-xl shadow-md p-5">
-            <form className="flex flex-col gap-4 w-full  px-[20px]">
+            <form className="flex flex-col gap-4 w-full px-[2px] sm:px-[20px]">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 Single Payout Transaction
               </h2>
@@ -177,7 +177,7 @@ const Payout = () => {
             </form>
           </div>
 
-          <div className="flex w-full sm:w-[65%] h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-y-auto">
+          <div className="flex w-full sm:w-[65%] h-full flex-col bg-white rounded-xl shadow-md p-2 sm:p-5 overflow-y-auto">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               Last 10 Transactions
             </h2>
