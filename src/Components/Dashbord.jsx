@@ -100,7 +100,7 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-1 w-full sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
+          <div className="ml-1 w-full border sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
             <header className="w-full sm:h-[54px] h-[70px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
