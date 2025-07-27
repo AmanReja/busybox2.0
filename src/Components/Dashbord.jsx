@@ -74,7 +74,7 @@ const Dashbord = () => {
       <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
         <div className="w-full flex-col sm:flex-row flex">
-          <div className="flex flex-row h-[90px] sm:w-[5%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[15px]  sm:gap-[20px] w-full">
+          <div className="flex flex-row h-[90px] sm:w-[5%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[10px]  sm:gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
