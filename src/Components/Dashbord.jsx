@@ -71,10 +71,10 @@ const Dashbord = () => {
   ];
   return (
     <>
-      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center overflow-y-hidden ">
+      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center overflow-y-hidden overflow-x-hidden ">
         <Navbar></Navbar>
-        <div className="w-full flex">
-          <div className="flex flex-col items-center gap-[20px] w-[5%]">
+        <div className="w-full flex-col sm:flex-row flex">
+          <div className="flex flex-row  sm:w-[5%] sm:flex-col items-center gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
@@ -100,11 +100,11 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-1 w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
-            <header className="w-full h-[54px] border-b-[1px] border-gray-300">
+          <div className="ml-1 w-full sm:w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
+            <header className="w-full sm:h-[54px] h-[70px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
-                className="w-[100%] flex gap-8 px-4 items-center h-full"
+                className="w-full h-full flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-8 px-4 py-2 text-sm whitespace-nowrap"
               >
                 <div className="relative group">
                   <a href="#" className="flex items-center cursor-pointer">
