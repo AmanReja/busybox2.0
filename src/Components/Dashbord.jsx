@@ -1,0 +1,301 @@
+import { React, useState } from "react";
+import Navbar from "./Navbar";
+import busybox from "../assets/icons/busybox.png";
+import i5 from "../assets/images/5.png";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import Arrow from "../assets/icons/arrow.svg";
+import { ToastContainer } from "react-toastify";
+
+const Dashbord = () => {
+  const [shows, setShows] = useState(false);
+  const [showp, setShowp] = useState(false);
+  const [showc, setShowc] = useState(false);
+  const [showv, setShowv] = useState(false);
+  const [showca, setShowca] = useState(false);
+  const [showk, setShowk] = useState(false);
+  const [showd, setShowd] = useState(false);
+  const [showPayoutimg, setShowPayoutimg] = useState(false);
+  const [showCollection, setShowCollection] = useState(false);
+  const [showSubscription, setShowSubscription] = useState(false);
+  const [showVerification, setShowVerification] = useState(false);
+  const items = [
+    {
+      to: "/dashboard/summery",
+      icon: "fa-chart-simple",
+      label: "Summary",
+      show: shows,
+      setShow: setShows,
+    },
+    {
+      to: "/dashboard/payout",
+      icon: "fa-arrow-right -rotate-[50deg]",
+      label: "Payout",
+      show: showp,
+      setShow: setShowp,
+    },
+    {
+      to: "/dashboard/collection",
+      icon: "fa-arrow-right rotate-[130deg]",
+      label: "Collection",
+      show: showc,
+      setShow: setShowc,
+    },
+    {
+      to: "/dashboard/verification",
+      icon: "fa-circle-check",
+      label: "Verification",
+      show: showv,
+      setShow: setShowv,
+    },
+    {
+      to: "/dashboard/card",
+      icon: "fa-credit-card",
+      label: "Card",
+      show: showca,
+      setShow: setShowca,
+    },
+    {
+      to: "/dashboard/keys",
+      icon: "fa-code",
+      label: "Keys",
+      show: showk,
+      setShow: setShowk,
+    },
+    {
+      to: "/dashboard/document",
+      icon: "fa-file-import",
+      label: "Document",
+      show: showd,
+      setShow: setShowd,
+    },
+  ];
+  return (
+    <>
+      <ToastContainer></ToastContainer>
+      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center overflow-y-hidden ">
+        <Navbar></Navbar>
+        <div className="w-full flex">
+          <div className="flex flex-col items-center gap-[20px] w-[5%]">
+            {items.map(({ to, icon, label, show, setShow }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end
+                onMouseOver={() => setShow(true)}
+                onMouseLeave={() => setShow(false)}
+                className={({ isActive }) =>
+                  `group relative p-3 transition duration-200 rounded-full ${
+                    isActive ? "bg-white" : "hover:bg-white"
+                  }`
+                }
+              >
+                <i className={`fa-solid ${icon} text-[18px] text-gray-500`}></i>
+                <div
+                  className={`absolute left-[120%] top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded shadow-md transition duration-200 whitespace-nowrap ${
+                    show ? "visible" : "invisible"
+                  }`}
+                >
+                  {label}
+                </div>
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="ml-1 w-[94%] h-[600px] rounded-2xl border-gray-300 border-[1px] bg-white">
+            <header className="w-full h-[54px] border-b-[1px] border-gray-300">
+              <div
+                style={{ fontFamily: "Montserrat" }}
+                className="w-[100%] flex gap-8 px-4 items-center h-full"
+              >
+                <div className="relative group">
+                  <a href="#" className="flex items-center cursor-pointer">
+                    Payoutimg
+                    <img
+                      className="rotate-90 ml-2 w-3 h-3"
+                      src={Arrow}
+                      alt=""
+                    />
+                  </a>
+                  <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="flex flex-col gap-2 text-gray-700 text-sm">
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Single payout
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Bulk payout
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Report
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Invoices
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <a href="#" className="flex items-center cursor-pointer">
+                    Collection
+                    <img
+                      className="rotate-90 ml-2 w-3 h-3"
+                      src={Arrow}
+                      alt=""
+                    />
+                  </a>
+                  <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="flex flex-col gap-2 text-gray-700 text-sm">
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Virtual Account
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        UPI-Static QR
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        UPI-Dynamic QR
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Report
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Invoices
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <a href="#" className="flex items-center cursor-pointer">
+                    Subscription
+                    <img
+                      className="rotate-90 ml-2 w-3 h-3"
+                      src={Arrow}
+                      alt=""
+                    />
+                  </a>
+                  <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="flex flex-col gap-2 text-gray-700 text-sm">
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Single eNach
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Bulk eNach
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Cancel eNach
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Transaction Report
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Invoices
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative group">
+                  <a href="#" className="flex items-center cursor-pointer">
+                    Verification
+                    <img
+                      className="rotate-90 ml-2 w-3 h-3"
+                      src={Arrow}
+                      alt=""
+                    />
+                  </a>
+                  <div className="absolute top-[30px] left-0 w-[230px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="flex flex-col gap-2 text-gray-700 text-sm">
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Aadhaar eKYC
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        PAN Verification
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Bank Account - Penny Drop
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Report
+                      </a>
+                      <a
+                        href="#"
+                        className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
+                      >
+                        Invoices
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  className="flex justify-center items-center cursor-pointer"
+                  href="#"
+                >
+                  Ledger
+                </a>
+              </div>
+            </header>
+
+            <Outlet></Outlet>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Dashbord;
