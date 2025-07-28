@@ -87,10 +87,10 @@ const Addmoney = () => {
   ];
   return (
     <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-      <main className="w-full h-[546px] flex flex-col overflow-y-scroll">
-        <section className="w-full flex gap-5 min-h-[500px] h-[500px] mt-5 px-5">
-          <div className="w-full flex gap-5 bg-white p-5 rounded-xl ">
-            <form className="w-1/3 flex flex-col gap-4 rounded-xl bg-white shadow p-6">
+      <main className="w-fullh-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
+        <section className="w-full flex gap-5 sm:min-h-[800px] h-auto  sm:h-[800px] mt-5 px-5">
+          <div className="w-full flex-col sm:flex-row flex border h-full gap-5 bg-white p-5 rounded-xl ">
+            <form className="sm:w-1/3 w-full border flex flex-col gap-4 rounded-xl bg-white shadow p-6">
               <h2 className="text-2xl font-semibold text-gray-800">
                 Add Money
               </h2>
@@ -147,7 +147,7 @@ const Addmoney = () => {
               </button>
             </form>
 
-            <div className="w-2/5 flex flex-col gap-5">
+            <div className="sm:w-2/5 w-full flex flex-col border gap-5">
               <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 h-[120px]">
                 <div className="flex items-center gap-3">
                   <i className="fa-solid fa-credit-card text-blue-600 text-xl"></i>
@@ -204,6 +204,38 @@ const Addmoney = () => {
                     <p className="font-medium text-gray-600">Bank Name:</p>
                     <p className="text-right font-semibold text-gray-800">
                       HDFC Bank Ltd
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white shadow rounded-xl p-5">
+                <h1 className="text-lg font-semibold text-gray-800 mb-4">
+                  Account Details
+                </h1>
+                <div className="w-full border border-gray-300 rounded-lg overflow-hidden text-sm text-gray-700">
+                  {/* Table Row */}
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">Account Name:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                    Busybox Payout Account
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">A/C No:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                    016081300000116
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                    <p className="font-medium text-gray-600">IFSC Code:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                    YESB0000160
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 px-4 py-2">
+                    <p className="font-medium text-gray-600">Bank Name:</p>
+                    <p className="text-right font-semibold text-gray-800">
+                    Yes Bank Ltd
                     </p>
                   </div>
                 </div>

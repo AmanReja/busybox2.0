@@ -31,8 +31,8 @@ const Summery = () => {
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-        <main className="w-full  h-[] sm:h-[546px] flex flex-col overflow-y-scroll">
+      <div className=" w-[100%] rounded-2xl h-[600px] sm:h-[500px]  flex flex-col">
+        <main className="w-full  h-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
           <div className="w-full sm:h-[50px] h-[90px] sm:flex-row flex-col px-[20px] flex items-center justify-between mt-[2px] sm:mt-[30px] ">
             <h1 className="text-[23px] font-semibold">Dashboard Summary</h1>
             <div className="h-full w-full sm:w-[360px] gap-[10px] flex">
@@ -82,7 +82,7 @@ const Summery = () => {
               </div>
             </div>
           </div>
-          <section className="w-full flex flex-col sm:flex-row  gap-[20px]  sm:min-h-[400px] sm:h-[400px]  px-[20px]">
+          <section className="w-full flex flex-col sm:flex-row  gap-[20px]   sm:min-h-[400px] sm:h-[400px]  px-[20px]">
             <div className="flex w-full z-0 sm:w-[35%] h-full">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-4 ">
                 <div className="flex flex-col items-center justify-between shadow-sky-200 rounded-xl p-4 bg-white  shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
