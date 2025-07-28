@@ -18,6 +18,9 @@ import Keys from "./Components/Keys";
 import Document from "./Components/Document";
 import Payout from "./Components/Payout";
 import Addmoney from "./Components/Addmoney.jsx";
+import Bulkpayout from "./Components/Bulkpayout";
+import Report from "./Components/Report";
+import Virtualaccount from "./Components/Virtualaccount";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +29,9 @@ const router = createBrowserRouter(
       <Route path="/dashboard" element={<Dashbord />}>
         <Route index path="summery" element={<Summery />} />
         <Route path="addmoney" element={<Addmoney />} />
+        <Route path="bulkpayout" element={<Bulkpayout />} />
+        <Route path="virtualaccount" element={<Virtualaccount />} />
+        <Route path="report" element={<Report />} />
         <Route path="payout" element={<Payout />} />
         <Route path="collection" element={<Collection />} />
         <Route path="verification" element={<Verification />} />

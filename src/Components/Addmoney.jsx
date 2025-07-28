@@ -89,8 +89,8 @@ const Addmoney = () => {
     <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
       <main className="w-fullh-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
         <section className="w-full flex gap-5 sm:min-h-[800px] h-auto  sm:h-[800px] mt-5 px-5">
-          <div className="w-full flex-col sm:flex-row flex border h-full gap-5 bg-white p-5 rounded-xl ">
-            <form className="sm:w-1/3 w-full border flex flex-col gap-4 rounded-xl bg-white shadow p-6">
+          <div className="w-full flex-col sm:flex-row flex  h-full gap-5 bg-white p-5 rounded-xl ">
+            <form className="sm:w-1/3 w-full  flex flex-col gap-4 rounded-xl bg-white shadow p-6">
               <h2 className="text-2xl font-semibold text-gray-800">
                 Add Money
               </h2>
@@ -147,15 +147,19 @@ const Addmoney = () => {
               </button>
             </form>
 
-            <div className="sm:w-2/5 w-full flex flex-col border gap-5">
+            <div className="sm:w-2/5 w-full flex flex-col  gap-5">
               <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 h-[120px]">
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-credit-card text-blue-600 text-xl"></i>
+                  <div className=" bg-gray-300 rounded-3xl w-[60px] h-[60px] flex items-center justify-center">
+ <i className="fa-solid fa-wallet text-white text-xl"></i>
+                  </div>
+               
+                
                   <div>
                     <h1 className="text-lg font-semibold text-gray-800">
                       Payout Fund
                     </h1>
-                    <p className="text-sm text-green-600">Active</p>
+                    <p className="text-sm text-gray-400">Active</p>
                   </div>
                 </div>
                 <h1 className="text-lg font-bold text-gray-800">
@@ -165,12 +169,15 @@ const Addmoney = () => {
 
               <div className="flex items-center justify-between bg-white shadow rounded-xl p-5 h-[120px]">
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-wallet text-blue-600 text-xl"></i>
+                  <div className="bg-gray-300 rounded-3xl w-[60px] h-[60px] flex items-center justify-center">
+                  <i className="fa-solid fa-credit-card text-white text-xl"></i>
+                  </div>
+                
                   <div>
                     <h1 className="text-lg font-semibold text-gray-800">
                       Card Balance
                     </h1>
-                    <p className="text-sm text-green-600">Active</p>
+                    <p className="text-sm text-gray-400">Active</p>
                   </div>
                 </div>
                 <h1 className="text-lg font-bold text-gray-800">₹ 0.00</h1>

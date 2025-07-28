@@ -87,10 +87,10 @@ const Summery = () => {
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-4 ">
                 <div className="flex flex-col items-center justify-between shadow-sky-200 rounded-xl p-4 bg-white  shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-arrow-right text-5xl text-blue-600 rotate-[-50deg]"></i>
+                    <i className="fa-solid fa-arrow-right text-3xl text-orange-600 rotate-[-50deg]"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
-                    <h1 className="text-4xl font-extrabold text-gray-800">
+                    <h1 className="text-4xl font-semibold text-gray-800">
                       36
                     </h1>
                     <p className="text-base text-gray-500">Payouts</p>
@@ -99,30 +99,30 @@ const Summery = () => {
 
                 <div className="flex flex-col items-center justify-between shadow-lime-200 rounded-xl p-4 bg-white shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-arrow-right text-5xl text-green-600 rotate-[130deg]"></i>
+                    <i className="fa-solid fa-arrow-right text-3xl text-green-600 rotate-[130deg]"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
-                    <h1 className="text-4xl font-extrabold text-gray-800">0</h1>
+                    <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
                     <p className="text-base text-gray-500">Collection</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center justify-between shadow-violet-300  rounded-xl p-4 bg-white shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-regular fa-credit-card text-5xl text-violet-600"></i>
+                    <i className="fa-regular fa-credit-card text-3xl text-violet-600"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
-                    <h1 className="text-4xl font-extrabold text-gray-800">0</h1>
+                    <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
                     <p className="text-base text-gray-500">Cards Created</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center justify-between shadow-red-200 rounded-xl p-4 bg-white shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-circle-check text-5xl text-red-600"></i>
+                    <i className="fa-solid fa-circle-check text-3xl text-red-600"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
-                    <h1 className="text-4xl font-extrabold text-gray-800">0</h1>
+                    <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
                     <p className="text-base text-gray-500">Identity Verified</p>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ const Summery = () => {
             <div className="flex w-full sm:w-[65%] h-[100%]  flex-col justify-center items-center">
               <header className="w-full h-[18%] flex  justify-around items-center border-l-[1px] border-r-[1px] border-t-[1px]  border-gray-300 rounded-tl-2xl rounded-tr-2xl">
                 <h1 className="text-[22px]">Earnings</h1>
-                <select className=" border-gray-300 rounded-[8px] w-[130px] outline-none px-[20px] border py-[3px]">
+                <select className=" border-gray-300 rounded-[5px] text-gray-400 w-[130px] outline-none px-[20px] border py-[3px]">
                   <option value="1 month">1 month</option>
                   <option value="3 month">2 month</option>
                   <option value="6 month">6 month</option>
