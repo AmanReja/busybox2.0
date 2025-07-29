@@ -82,7 +82,7 @@ const Payout = () => {
              
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="Select Debit Account"
                 />
               </div>
@@ -90,7 +90,7 @@ const Payout = () => {
              
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="Account Number"
                 />
               </div>
@@ -98,7 +98,7 @@ const Payout = () => {
              
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="IFSC Code"
                 />
               </div>
@@ -106,7 +106,7 @@ const Payout = () => {
              
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-inter placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-inter placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="Benificiary Name"
                 />
               </div>

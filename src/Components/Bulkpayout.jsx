@@ -71,20 +71,8 @@ const Bulkpayout = () => {
       account: "Meena Verma - Union ****9900",
       amount: 7000,
     },
-    {
-      status: "Success",
-      date: "2025-07-16",
-      utr: "UTR92736455",
-      account: "Suresh Raina - PNB ****1111",
-      amount: 5400,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-15",
-      utr: "UTR37482736",
-      account: "Geeta Das - UCO ****2222",
-      amount: 2500,
-    },
+    
+   
   ];
   return (
     <div className=" w-[100%] rounded-2xl sm:h-[500px] h-[600px] flex flex-col">
@@ -140,25 +128,70 @@ const Bulkpayout = () => {
             </form>
           </div>
 
-          <div className="flex w-full sm:w-[65%] h-full flex-col bg-white rounded-xl shadow-md p-2 sm:p-5 overflow-y-auto">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          <div className="flex w-[68%] mt-[20px] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
+          <div className="text flex justify-between items-center p-4  h-[60px] w-full">
+           <h2 className="text-[16px]  font-semibold text-gray-800 ">
               Last 10 Transactions
             </h2>
+            <div className="border-gray-300 border-[1px] p-1 px-[20px] rounded-[8px] hover:shadow-gray-300 hover:shadow-xl duration-300 ">
+              <button className="text-[12px]  font-medium text-gray-500 ">See More Transaction</button>
+            </div>
+           </div>
+            
             <table className="w-full text-sm text-left text-gray-600">
-              <thead className="text-xs text-gray-700 uppercase border-b border-gray-300">
+              <thead className="text-[11px] text-gray-400 uppercase border-b bg-[#fcfcfc] border-gray-300 border-t">
                 <tr>
-                  <th className="px-4 py-2">#FileStatus</th>
-                  <th className="px-4 py-2">Txn Date
+                  <th className="px-4 py-4">#Status</th>
+                  <th className="px-4 py-4">
+  <div className="flex items-center space-x-1">
+    <p>Txn Date</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div>
 </th>
-                  <th className="px-4 py-2">TxnID</th>
-                  <th className="px-4 py-2">File Name
-</th>
-                  <th className="px-4 py-2">Total Amount</th>
-                  <th className="px-4 py-2">Action
-</th>
+
+                  <th className="px-4 py-4"> <div className="flex items-center space-x-1">
+    <p>UTR</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
+                  <th className="px-4 py-4"> <div className="flex items-center space-x-1">
+    <p>Account Details</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
+                  <th className="px-4 py-4"><div className="flex items-center space-x-1">
+    <p>Amount</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-[12px] font-semibold">
                 {transactions.map((txn, i) => (
                   <tr
                     key={i}
@@ -166,21 +199,21 @@ const Bulkpayout = () => {
                   >
                     <td className="px-4 py-2">
                       <span
-                        className={`text-white rounded-[2px] p-1 text-[10px] ${
+                        className={`text-white rounded-[3px] px-[13px] py-[2px] text-center content-center min-w-[80px] h-[5px] w-[80px] font-bold text-[12px] ${
                           txn.status === "Success"
-                            ? "bg-green-500"
+                            ? "bg-green-400"
                             : txn.status === "Pending"
-                            ? "bg-yellow-500"
-                            : "bg-red-500"
+                            ? "bg-yellow-400"
+                            : "bg-red-400"
                         }`}
                       >
                         {txn.status}
                       </span>
                     </td>
-                    <td className="px-4 py-2">{txn.date}</td>
-                    <td className="px-4 py-2">{txn.utr}</td>
-                    <td className="px-4 py-2">{txn.account}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-5">{txn.date}</td>
+                    <td className="px-4 py-5">{txn.utr}</td>
+                    <td className="px-4 py-5">{txn.account}</td>
+                    <td className="px-4 py-5">
                       ₹{txn.amount.toLocaleString()}
                     </td>
                   </tr>

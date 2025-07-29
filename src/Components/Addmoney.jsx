@@ -101,7 +101,7 @@ const Addmoney = () => {
              
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="Amount"
                 />
               </div>
@@ -110,7 +110,7 @@ const Addmoney = () => {
                 
                 <input
                   type="date"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] text-gray-800 text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] text-gray-800 text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                 />
               </div>
 
@@ -118,7 +118,7 @@ const Addmoney = () => {
                
                 <input
                   type="text"
-                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  className="border bg-[#fcfcfc] placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                   placeholder="UTR No"
                 />
               </div>

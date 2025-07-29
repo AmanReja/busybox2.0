@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
 
 const Ledger = () => {
+
+    const [searchdate,setSearchdate]=useState("")     
+
+    const date =  new Date()
   const getalldata = async () => {
     const res = await fetch(`https://api.busybox.in/payment/payment`);
     const data = await res.json();
@@ -16,7 +20,7 @@ const Ledger = () => {
   const transactions = [
     {
       status: "Success",
-      date: "2025-07-24",
+      date: "2025-07-29 17:15:51",
       utr: "UTR12345678",
       account: "Aman Reja - HDFC ****1234",
       amount: 5000,
@@ -113,7 +117,7 @@ My Ledger</span>
 <div className="w-full px-[20px] mt-[20px]">
           <div className="flex w-[100%] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
            
-          <div className="flex justify-between items-center p-4 py-6  w-full flex-wrap gap-4 bg-white shadow-sm rounded-md">
+          <div className="flex justify-between items-center p-4 py-6  w-full flex-wrap gap-4 bg-white shadow-sm ">
  
   <h2 className="text-lg font-semibold text-gray-800">
   Wallet Ledger
@@ -122,20 +126,23 @@ My Ledger</span>
 
   <div className="flex gap-3 flex-wrap items-center">
 
-    <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white flex items-center justify-center ">
-    <i class="fa-regular text-gray-400 fa-calendar-days"></i>
+  <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white flex items-center justify-between space-x-2">
+  <i className="fa-regular fa-calendar-days text-gray-400"></i>
   <input
-    type="date"
-    className="outline-none text-sm  w-[90px] text-gray-700 bg-transparent hide-date-icon"
-    value="2025-07-27"
+  type="text"
+  onChange={(e)=>{
+    setSearchdate(e.target.value)
+  }}
+    className="text-sm text-gray-700 bg-transparent outline-none"
+    placeholder={`${date.toLocaleDateString()}-${date.toLocaleDateString()}`}
+    value={searchdate}
+   
   />
-  <span className="text-gray-500">-</span>
-  <input
-    type="date"
-    value="2025-08-27"
-    className="outline-none text-sm w-[90px] text-gray-700 bg-transparent hide-date-icon"
-  />
+    
+
+ 
 </div>
+
 
 
 
@@ -150,7 +157,7 @@ My Ledger</span>
       />
     </div>
 
-    {/* Select dropdown */}
+
     <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white">
       <select className="text-sm text-gray-700 bg-transparent outline-none">
         <option value="All Transactions">All Transactions</option>
@@ -160,7 +167,7 @@ My Ledger</span>
       </select>
     </div>
 
-    {/* Download button */}
+  
     <button className="text-sm font-medium text-gray-700  hover:shadow-xl border-gray-300 border-1  px-4 py-1 rounded-lg transition">
       <span><i class="fa-solid fa-download text-gray-400"></i></span>Download
     </button>
@@ -168,105 +175,96 @@ My Ledger</span>
 </div>
 
            
-            <table className="w-full text-sm text-left text-gray-600">
-            <thead className="text-[11px] text-gray-400 uppercase border-b bg-[#fcfcfc] border-gray-300 border-t">
-                <tr>
-                  <th className="px-4 py-3">#Txn Details
-</th>
-                  <th className="px-4 py-3">
-  <div className="flex items-center space-x-1">
-    <p>#Txn Date
-</p>
-    <div className="flex flex-col justify-center items-center leading-none">
-      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
-        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
-        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
-      </svg>
-    </div>
-  </div>
-</th>
+<table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-md overflow-hidden">
+  <thead className="text-[11px] text-gray-500 uppercase bg-[#f9f9f9] border-b border-gray-300">
+    <tr>
+      <th className="px-4 py-3">#Txn Details</th>
+      <th className="px-4 py-3">
+        <div className="flex items-center space-x-1">
+          <p>#Txn Date</p>
+          <div className="flex flex-col justify-center items-center leading-none">
+            <svg className="-mb-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#1f1f1f">
+              <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+            </svg>
+            <svg className="-mt-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#1f1f1f">
+              <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+            </svg>
+          </div>
+        </div>
+      </th>
+      <th className="px-4 py-3">
+        <div className="flex items-center space-x-1">
+          <p>Txn Charges</p>
+          <div className="flex flex-col justify-center items-center leading-none">
+            <svg className="-mb-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#dbdad7">
+              <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+            </svg>
+            <svg className="-mt-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#1f1f1f">
+              <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+            </svg>
+          </div>
+        </div>
+      </th>
+      <th className="px-4 py-3">Closing Balance</th>
+      <th className="px-4 py-3">Remark</th>
+      <th className="px-4 py-3">Status</th>
+    </tr>
+  </thead>
 
-                  <th className="px-4 py-3"> <div className="flex items-center space-x-1">
-    <p>Txn Charges
-</p>
-    <div className="flex flex-col justify-center items-center leading-none">
-      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mb-[4px]">
-        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
-        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
-      </svg>
-    </div>
-  </div></th>
-                  <th className="px-4 py-3"> <div className="flex items-center space-x-1">
-    <p>Closing Balance</p>
-   
-  </div></th>
-                  <th className="px-4 py-3"><div className="flex items-center space-x-1">
-    <p>Remark</p>
+  <tbody className="text-[13px] font-medium">
+    {transactions.map((txn, i) => (
+      <tr key={i} className="border-b border-gray-100 hover:bg-gray-50 transition">
+       
+        <td className="px-4 py-4 align-top">
+          <div className="space-y-2">
+            <p className="text-sm text-gray-700 font-medium">
+              REQUEST ID: <span className="font-semibold text-gray-900">{txn.utr}</span>
+            </p>
+            <div className="flex items-center space-x-2 text-xs font-semibold">
+              <span className="flex items-center justify-center w-6 h-6 bg-green-100 border border-green-300 text-green-700 rounded">
+                CR
+              </span>
+              <span className="text-gray-400">|</span>
+              <span className="flex items-center justify-center w-[80px] h-6 bg-gray-100 border border-gray-300 text-gray-700 rounded">
+                REFUND
+              </span>
+            </div>
+          </div>
+        </td>
+
+       
+        <td className="px-4 py-4">{txn.date}</td>
+
+        
+        <td className="px-4 py-4">{txn.utr}</td>
+
+       
+        <td className="px-4 py-4">{txn.account}</td>
+
     
-  </div></th>
-                  <th className="px-4 py-3"><div className="flex items-center space-x-1">
-    <p>Status</p>
-    
-  </div></th>
-                </tr>
-              </thead>
-              <tbody className="text-[12px] font-semibold">
-                {transactions.map((txn, i) => (
-                  <tr
-                    key={i}
-                    className="border-b border-gray-100 hover:bg-gray-50"
-                  >
-                    <td className="px-4 py-5 align-top">
-  <div className="space-y-2">
-    {/* Request ID */}
-    <p className="text-sm text-gray-700 font-medium">
-      REQUEST ID: <span className="font-semibold text-gray-900">{txn.utr}</span>
-    </p>
+        <td className="px-4 py-4">₹{txn.amount.toLocaleString()}</td>
 
-    {/* Tags (CR, DR) */}
-    <div className="flex items-center space-x-2 text-xs font-semibold">
-      <span className="flex items-center justify-center w-6 h-6 bg-green-100 border-green-300 border-[1px] text-green-700 rounded">
-        CR
-      </span>
-      <span className="text-gray-400">|</span>
-      <span className="flex items-center justify-center w-[80px] border-gray-300 border-[1px] h-6 bg-gray-100 text-gray-700 rounded">
-        REFUND
-      </span>
-    </div>
-  </div>
-</td>
+       
+        <td className="px-4 py-4">
+          <span
+            className={`text-white rounded-[4px] px-3 py-1 min-w-[80px] text-center inline-block font-bold text-[12px] ${
+              txn.status === "Success"
+                ? "bg-green-500"
+                : txn.status === "Pending"
+                ? "bg-yellow-400 text-black"
+                : "bg-red-400"
+            }`}
+          >
+            {txn.status}
+          </span>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
 
-                    <td className="px-4 py-5">{txn.date}</td>
-                    <td className="px-4 py-5">{txn.utr}</td>
-                    <td className="px-4 py-5">{txn.account}</td>
-                    <td className="px-4 py-5">
-                      ₹{txn.amount.toLocaleString()}
-                    </td>
-                    <td className="px-4 py-2">
-                      <span
-                        className={`text-white rounded-[3px] px-[13px] py-[2px] text-center content-center min-w-[80px] h-[5px] w-[80px] font-bold text-[12px] ${
-                          txn.status === "Success"
-                            ? "bg-green-400"
-                            : txn.status === "Pending"
-                            ? "bg-yellow-400"
-                            : "bg-red-400"
-                        }`}
-                      >
-                        {txn.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-                
-              </tbody>
-              
-            </table>
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-white text-sm text-gray-600">
-  {/* Showing entries */}
+  
   <div>
   Show <select className="rounded border-[1px] outline-none border-gray-300 px-[5px] py-[5px]" name="" id="">
     
@@ -277,7 +275,7 @@ My Ledger</span>
 
   </div>
 
-  {/* Pagination buttons */}
+
   <div className="flex items-center space-x-2">
     <p>1-10 of 7406</p>
     <button
