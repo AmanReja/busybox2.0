@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 html,body{
   overflow-x: hidden;
 }
 
-
+body{
+  font-family: "inter";
+}
 
 
 input[type="radio"] {
@@ -11,3 +14,7 @@ input[type="radio"] {
   border: #42b0f5;
 }
 
+input.hide-date-icon::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

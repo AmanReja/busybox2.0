@@ -88,40 +88,41 @@ const Addmoney = () => {
   return (
     <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
       <main className="w-fullh-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
-        <section className="w-full flex gap-5 sm:min-h-[800px] h-auto  sm:h-[800px] mt-5 px-5">
-          <div className="w-full flex-col sm:flex-row flex  h-full gap-5 bg-white p-5 rounded-xl ">
-            <form className="sm:w-1/3 w-full  flex flex-col gap-4 rounded-xl bg-white shadow p-6">
-              <h2 className="text-2xl font-semibold text-gray-800">
+        <section className="w-full flex gap-5 sm:min-h-[900px] h-auto  sm:h-[900px] mt-5 px-5">
+          <div className="w-full  flex-col sm:flex-row flex  h-full gap-5 bg-white p-5 rounded-xl ">
+            <form className="sm:w-[30%] border-gray-200 border w-full  flex flex-col gap-4 rounded-xl bg-white">
+              <div className="border-b-gray-200 border-b-[1px] w-full p-4">
+              <h2 className="text-[16px] font-semibold text-gray-800 ">
                 Add Money
               </h2>
-
+              </div>
+              <div className="w-full px-[30px] flex flex-col gap-[20px]">
               <div className="flex flex-col">
-                <label className="mb-1 text-sm text-gray-600">Amount</label>
+             
                 <input
                   type="text"
-                  className="border border-gray-300 rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-200"
-                  placeholder="Enter amount"
+                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  placeholder="Amount"
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm text-gray-600">Date</label>
+                
                 <input
                   type="date"
-                  className="border text-gray-400 border-gray-300 rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-200"
+                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] text-gray-800 text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="mb-1 text-sm text-gray-600">UTR No</label>
+               
                 <input
                   type="text"
-                  className="border border-gray-300 rounded px-3 py-2 outline-none focus:ring-2 focus:ring-blue-200"
-                  placeholder="Enter UTR number"
+                  className="border bg-gray-50 placeholder:font-semibold placeholder:text-gray-400 placeholder:text-[14px] border-gray-300 rounded px-3 py-2 outline-none focus:ring-1 focus:ring-blue-200"
+                  placeholder="UTR No"
                 />
               </div>
-
-              <div className="flex justify-between text-sm text-gray-700">
+              <div className="flex justify-between text-[14px] font-semibold text-gray-400 ">
                 {["IMPS", "NEFT", "RTGS"].map((method) => (
                   <div key={method} className="flex items-center gap-2">
                     <input
@@ -134,8 +135,7 @@ const Addmoney = () => {
                   </div>
                 ))}
               </div>
-
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-800 pl-[3px]">
                 Note: Max ₹5 lakh per transaction, real-time credit, works 24x7.
               </p>
 
@@ -145,6 +145,14 @@ const Addmoney = () => {
               >
                 Process
               </button>
+
+              </div>
+             
+
+            
+             
+
+            
             </form>
 
             <div className="sm:w-2/5 w-full flex flex-col  gap-5">
@@ -183,31 +191,34 @@ const Addmoney = () => {
                 <h1 className="text-lg font-bold text-gray-800">₹ 0.00</h1>
               </div>
 
-              <div className="bg-white shadow rounded-xl p-5">
-                <h1 className="text-lg font-semibold text-gray-800 mb-4">
-                  Account Details
-                </h1>
+              <div className="bg-white shadow rounded-xl ">
+               
                 <div className="w-full border border-gray-300 rounded-lg overflow-hidden text-sm text-gray-700">
                   {/* Table Row */}
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
+                  <h1 className="text-lg font-semibold text-gray-800 ">
+                  Account Details
+                </h1>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">Account Name:</p>
                     <p className="text-right font-semibold text-gray-800">
                       Aakash
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">A/C No:</p>
                     <p className="text-right font-semibold text-gray-800">
                       BB559900000036
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">IFSC Code:</p>
                     <p className="text-right font-semibold text-gray-800">
                       HDFC0000060
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 px-4 py-2">
+                  <div className="grid grid-cols-2 px-4 py-4">
                     <p className="font-medium text-gray-600">Bank Name:</p>
                     <p className="text-right font-semibold text-gray-800">
                       HDFC Bank Ltd
@@ -215,31 +226,34 @@ const Addmoney = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white shadow rounded-xl p-5">
-                <h1 className="text-lg font-semibold text-gray-800 mb-4">
-                  Account Details
-                </h1>
+              <div className="bg-white shadow rounded-xl ">
+               
                 <div className="w-full border border-gray-300 rounded-lg overflow-hidden text-sm text-gray-700">
                   {/* Table Row */}
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
+                  <h1 className="text-lg font-semibold text-gray-800 ">
+                  Account Details
+                </h1>
+                  </div>
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">Account Name:</p>
                     <p className="text-right font-semibold text-gray-800">
                     Busybox Payout Account
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">A/C No:</p>
                     <p className="text-right font-semibold text-gray-800">
                     016081300000116
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-2">
+                  <div className="grid grid-cols-2 border-b border-gray-300 px-4 py-4">
                     <p className="font-medium text-gray-600">IFSC Code:</p>
                     <p className="text-right font-semibold text-gray-800">
                     YESB0000160
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 px-4 py-2">
+                  <div className="grid grid-cols-2 px-4 py-4">
                     <p className="font-medium text-gray-600">Bank Name:</p>
                     <p className="text-right font-semibold text-gray-800">
                     Yes Bank Ltd
@@ -252,21 +266,71 @@ const Addmoney = () => {
         </section>
 
         <div className="w-full px-[20px] mt-[20px]">
-          <div className="flex w-[100%] h-full flex-col bg-white rounded-xl shadow-md p-5 overflow-y-auto">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          <div className="flex w-[100%] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
+           
+           <div className="text flex justify-between items-center p-4  h-full w-full">
+           <h2 className="text-[16px]  font-semibold text-gray-800 ">
               Last 10 Transactions
             </h2>
+            <div className="border-gray-300 border-[1px] p-2 px-[20px] rounded-[8px] ">
+              <p className="text-[12px]  font-medium text-gray-500 ">See More Transaction</p>
+            </div>
+           </div>
+           
             <table className="w-full text-sm text-left text-gray-600">
-              <thead className="text-xs text-gray-700 uppercase border-b border-gray-300">
+            <thead className="text-[11px] text-gray-400 uppercase border-b bg-[#fcfcfc] border-gray-300 border-t">
                 <tr>
-                  <th className="px-4 py-2">#Status</th>
-                  <th className="px-4 py-2">Txn Date</th>
-                  <th className="px-4 py-2">UTR</th>
-                  <th className="px-4 py-2">Account Details</th>
-                  <th className="px-4 py-2">Amount</th>
+                  <th className="px-4 py-4">#Status</th>
+                  <th className="px-4 py-4">
+  <div className="flex items-center space-x-1">
+    <p>Txn Date</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div>
+</th>
+
+                  <th className="px-4 py-4"> <div className="flex items-center space-x-1">
+    <p>UTR</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
+                  <th className="px-4 py-4"> <div className="flex items-center space-x-1">
+    <p>Account Details</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
+                  <th className="px-4 py-4"><div className="flex items-center space-x-1">
+    <p>Amount</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-[12px] font-semibold">
                 {transactions.map((txn, i) => (
                   <tr
                     key={i}
@@ -274,21 +338,21 @@ const Addmoney = () => {
                   >
                     <td className="px-4 py-2">
                       <span
-                        className={`text-white rounded-[2px] p-1 text-[10px] ${
+                        className={`text-white rounded-[3px] px-[13px] py-[2px] text-center content-center min-w-[80px] h-[5px] w-[80px] font-bold text-[12px] ${
                           txn.status === "Success"
-                            ? "bg-green-500"
+                            ? "bg-green-400"
                             : txn.status === "Pending"
-                            ? "bg-yellow-500"
-                            : "bg-red-500"
+                            ? "bg-yellow-400"
+                            : "bg-red-400"
                         }`}
                       >
                         {txn.status}
                       </span>
                     </td>
-                    <td className="px-4 py-2">{txn.date}</td>
-                    <td className="px-4 py-2">{txn.utr}</td>
-                    <td className="px-4 py-2">{txn.account}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-5">{txn.date}</td>
+                    <td className="px-4 py-5">{txn.utr}</td>
+                    <td className="px-4 py-5">{txn.account}</td>
+                    <td className="px-4 py-5">
                       ₹{txn.amount.toLocaleString()}
                     </td>
                   </tr>

@@ -3,6 +3,7 @@ import Hdfc from "../assets/images/HDFC.png";
 import Chart from "./Chart";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { useParams, useLocation } from "react-router-dom";
+import bg3 from "../assets/images/bg-3.png"
 
 const Summery = () => {
   const location = useLocation();
@@ -27,6 +28,14 @@ const Summery = () => {
   useEffect(() => {
     sucesslog();
   }, [loginSuccess]);
+
+
+  const icons=[
+    {icon:"fa-solid fa-arrow-right",num:36,text:"Payouts",deg:"-50deg" },
+    {icon:"fa-solid fa-arrow-right",num:0,text:"Collection",deg:"130deg"},
+    {icon:"fa-regular fa-credit-card",num:0,text:"Cards Created",deg:"0deg"},
+    {icon:"fa-solid fa-circle-check",num:0,text:"Identity Verified",deg:"0deg"},
+  ]
 
   return (
     <>
@@ -85,9 +94,26 @@ const Summery = () => {
           <section className="w-full flex flex-col sm:flex-row  gap-[20px]   sm:min-h-[400px] sm:h-[400px]  px-[20px]">
             <div className="flex w-full z-0 sm:w-[35%] h-full">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-4 ">
-                <div className="flex flex-col items-center justify-between shadow-sky-200 rounded-xl p-4 bg-white  shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-arrow-right text-3xl text-orange-600 rotate-[-50deg]"></i>
+{icons.map(({icon,num,text,deg})=>(<div style={{backgroundImage:`url(${bg3})`}} className="flex bg-no-repeat bg-left-top bg-contain flex-col  items-center justify-between  rounded-xl p-4   shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div  className="w-full  flex justify-center items-center h-[40%]">
+                    <i style={{transform:`rotate(${deg})`}} className={`${icon} text-3xl text-gray-600 `}></i>
+                  
+                  </div>
+                  <div className="w-full text-center h-[60%]">
+                    <h1 className="text-4xl font-semibold text-gray-800">
+                      {num}
+                    </h1>
+                    <p className="text-base text-gray-500">{text}</p>
+                  </div>
+                </div>))
+
+}
+
+
+                {/* <div style={{backgroundImage:`url(${bg3})`}} className="flex bg-no-repeat bg-left-top bg-contain flex-col  items-center justify-between  rounded-xl p-4   shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div  className="w-full  flex justify-center items-center h-[40%]">
+                    <i className="fa-solid fa-arrow-right text-3xl text-gray-600 rotate-[-50deg]"></i>
+                  
                   </div>
                   <div className="w-full text-center h-[60%]">
                     <h1 className="text-4xl font-semibold text-gray-800">
@@ -99,7 +125,7 @@ const Summery = () => {
 
                 <div className="flex flex-col items-center justify-between shadow-lime-200 rounded-xl p-4 bg-white shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-arrow-right text-3xl text-green-600 rotate-[130deg]"></i>
+                    <i className="fa-solid fa-arrow-right text-3xl text-gray-600 rotate-[130deg]"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
                     <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
@@ -109,7 +135,7 @@ const Summery = () => {
 
                 <div className="flex flex-col items-center justify-between shadow-violet-300  rounded-xl p-4 bg-white shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-regular fa-credit-card text-3xl text-violet-600"></i>
+                    <i className="fa-regular fa-credit-card text-3xl text-gray-600"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
                     <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
@@ -119,20 +145,20 @@ const Summery = () => {
 
                 <div className="flex flex-col items-center justify-between shadow-red-200 rounded-xl p-4 bg-white shadow-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-full flex justify-center items-center h-[40%]">
-                    <i className="fa-solid fa-circle-check text-3xl text-red-600"></i>
+                    <i className="fa-solid fa-circle-check text-3xl text-gray-600"></i>
                   </div>
                   <div className="w-full text-center h-[60%]">
                     <h1 className="text-4xl  font-semibold text-gray-800">0</h1>
                     <p className="text-base text-gray-500">Identity Verified</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="flex w-full sm:w-[65%] h-[100%]  flex-col justify-center items-center">
               <header className="w-full h-[18%] flex  justify-around items-center border-l-[1px] border-r-[1px] border-t-[1px]  border-gray-300 rounded-tl-2xl rounded-tr-2xl">
                 <h1 className="text-[22px]">Earnings</h1>
-                <select className=" border-gray-300 rounded-[5px] w-[130px] outline-none px-[20px] border py-[3px]">
+                <select className=" text-[12px] text-gray-400 border-gray-300 rounded-[5px] w-[130px] outline-none px-[12px] border py-[8px]">
                   <option value="1 month">1 month</option>
                   <option value="3 month">2 month</option>
                   <option value="6 month">6 month</option>
