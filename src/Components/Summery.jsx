@@ -40,8 +40,8 @@ const Summery = () => {
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className=" w-[100%] rounded-2xl h-[600px] sm:h-[500px]  flex flex-col">
-        <main className="w-full  h-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
+      <div className=" w-[100%] rounded-2xl lg:h-[650px] xl:h-[640px] 2xl:h-[790px] h-[600px] sm:h-[500px]  flex flex-col">
+        <main className="w-full  h-[600px] lg:h-[575px] xl:h-[550px]  2xl:h-[780px] sm:h-[475px] flex flex-col overflow-y-scroll">
           <div className="w-full sm:h-[50px] h-[90px] sm:flex-row flex-col px-[20px] flex items-center justify-between mt-[2px] sm:mt-[30px] ">
             <h1 className="text-[23px] font-semibold">Dashboard Summary</h1>
             <div className="h-full w-full sm:w-[360px] gap-[10px] flex">

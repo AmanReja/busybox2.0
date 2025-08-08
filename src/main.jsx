@@ -22,6 +22,13 @@ import Bulkpayout from "./Components/Bulkpayout";
 import Report from "./Components/Report";
 import Virtualaccount from "./Components/Virtualaccount";
 import Ledger from "./Components/Ledger";
+import { Provider } from "react-redux";
+import store from  "./redux/store"
+import Singleenath from "./Components/Singleenath";
+import Transactionreport from "./Components/Transactionreport";
+import Settings from "./Components/Settings";
+import Accounts from "./Components/Accounts";
+import Developertools from "./Components/Developertools";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,8 +38,18 @@ const router = createBrowserRouter(
         <Route index path="summery" element={<Summery />} />
         <Route path="addmoney" element={<Addmoney />} />
         <Route path="ledger" element={<Ledger />} />
+        <Route path="singleenath" element={<Singleenath />} />
         <Route path="bulkpayout" element={<Bulkpayout />} />
         <Route path="virtualaccount" element={<Virtualaccount />} />
+        <Route path="settings" element={<Settings/>} >
+
+
+        <Route index path="accounts" element={<Accounts/>} />
+        <Route  path="developertooles" element={<Developertools/>} />
+        
+        </Route>
+       
+        <Route path="transactionreport" element={<Transactionreport />} />
         <Route path="report" element={<Report />} />
         <Route path="payout" element={<Payout />} />
         <Route path="collection" element={<Collection />} />
@@ -47,6 +64,8 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </StrictMode>
 );

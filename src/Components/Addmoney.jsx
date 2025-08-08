@@ -86,8 +86,8 @@ const Addmoney = () => {
     },
   ];
   return (
-    <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-      <main className="w-fullh-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
+    <div className=" w-[100%] rounded-2xl h-[600px] 2xl:h-[790px] flex flex-col">
+      <main className="w-fullh-[600px]  sm:h-[475px] flex 2xl:h-[780px] flex-col overflow-y-scroll">
         <section className="w-full flex gap-5 sm:min-h-[900px] h-auto  sm:h-[900px] mt-5 px-5">
           <div className="w-full  flex-col sm:flex-row flex  h-full gap-5 bg-white p-5 rounded-xl ">
             <form className="sm:w-[30%] border-gray-200 border w-full  flex flex-col gap-4 rounded-xl bg-white">

@@ -2,7 +2,7 @@ import React, { useEffect,useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
 
-const Ledger = () => {
+const Transactionreport = () => {
 
     const [searchdate,setSearchdate]=useState("")     
 
@@ -96,7 +96,7 @@ const Ledger = () => {
       <div className="w-full h-[80px]  bg-white flex items-center px-5 ">
   <div className="flex gap-[5px] h-full items-center w-full">
     
-    <h1 className="text-xl content-center font-semibold text-gray-800">Wallet Ledger</h1>
+    <h1 className="text-xl content-center font-semibold text-gray-800">Debit Presentation Master</h1>
 
     <div className="flex items-center text-sm text-gray-500 space-x-1 mt-1 sm:mt-0">
       <a href="#" className="hover:underline text-gray-400">Home</a>
@@ -120,7 +120,7 @@ My Ledger</span>
           <div className="flex justify-between items-center p-4 py-6  w-full flex-wrap gap-4 bg-white shadow-sm ">
  
   <h2 className="text-lg font-semibold text-gray-800">
-  Wallet Ledger
+  Debit Presentation Master
   </h2>
 
 
@@ -161,16 +161,14 @@ My Ledger</span>
     <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white">
       <select className="text-sm text-gray-700 bg-transparent outline-none">
         <option value="All Transactions">All Transactions</option>
-        <option value="Success">Success</option>
-        <option value="Pending">Pending</option>
-        <option value="Failed" selected>Failed</option>
+        <option selected value="Success">Success</option>
+        <option value="Pending">initiated</option>
+        <option value="Failed" >Failed</option>
       </select>
     </div>
 
   
-    <button className="text-sm font-medium text-gray-700  hover:shadow-xl border-gray-300 border-1  px-4 py-1 rounded-lg transition">
-      <span><i class="fa-solid fa-download text-gray-400"></i></span>Download
-    </button>
+   
   </div>
 </div>
 
@@ -178,10 +176,12 @@ My Ledger</span>
 <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-md overflow-hidden">
   <thead className="text-[11px] text-gray-500 uppercase bg-[#f9f9f9] border-b border-gray-300">
     <tr>
-      <th className="px-4 py-3">#Txn Details</th>
+      <th className="px-4 py-3">Customer Details
+</th>
       <th className="px-4 py-3">
         <div className="flex items-center space-x-1">
-          <p>#Txn Date</p>
+          <p>Creation Date
+</p>
           <div className="flex flex-col justify-center items-center leading-none">
             <svg className="-mb-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#1f1f1f">
               <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
@@ -194,7 +194,8 @@ My Ledger</span>
       </th>
       <th className="px-4 py-3">
         <div className="flex items-center space-x-1">
-          <p>Txn Charges</p>
+          <p>Mandate Details
+</p>
           <div className="flex flex-col justify-center items-center leading-none">
             <svg className="-mb-[4px]" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="#dbdad7">
               <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
@@ -205,9 +206,9 @@ My Ledger</span>
           </div>
         </div>
       </th>
-      <th className="px-4 py-3">Closing Balance</th>
-      <th className="px-4 py-3">Remark</th>
-      <th className="px-4 py-3">Status</th>
+      <th className="px-4 py-3">Account Number</th>
+      <th className="px-4 py-3">Mandate Value</th>
+      <th className="px-4 py-3">#Status</th>
     </tr>
   </thead>
 
@@ -315,4 +316,4 @@ My Ledger</span>
   );
 };
 
-export default Ledger;
+export default Transactionreport;

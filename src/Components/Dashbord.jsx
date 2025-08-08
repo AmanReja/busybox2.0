@@ -14,6 +14,7 @@ const Dashbord = () => {
   const [showca, setShowca] = useState(false);
   const [showk, setShowk] = useState(false);
   const [showd, setShowd] = useState(false);
+  const [showset, setShowset] = useState(false);
   const [showPayoutimg, setShowPayoutimg] = useState(false);
   const [showCollection, setShowCollection] = useState(false);
   const [showSubscription, setShowSubscription] = useState(false);
@@ -68,6 +69,13 @@ const Dashbord = () => {
       show: showd,
       setShow: setShowd,
     },
+    {
+      to: "/dashboard/settings/accounts",
+      icon: "fa-solid fa-gear",
+      label: "Settings",
+      show: showset,
+      setShow: setShowset,
+    },
   ];
   return (
     <>
@@ -102,7 +110,7 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] h-[700px] sm:h-[540px] rounded-2xl border-gray-300 border-[1px] bg-white">
+          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] h-[700px] sm:h-[580px] lg:h-[650px] xl:h-[640px] 2xl:h-[850px] rounded-2xl border-gray-300 border-[1px] bg-white">
             <header className="w-full sm:h-[54px] h-[90px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
@@ -203,12 +211,12 @@ const Dashbord = () => {
                   </a>
                   <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <div className="flex flex-col gap-2 text-gray-700 text-sm">
-                      <a
-                        href="#"
+                      <NavLink
+                      to={"/dashboard/singleenath"}
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
                       >
                         Single eNach
-                      </a>
+                      </NavLink>
                       <a
                         href="#"
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
@@ -221,12 +229,14 @@ const Dashbord = () => {
                       >
                         Cancel eNach
                       </a>
-                      <a
-                        href="#"
+                      <NavLink
+                        to={
+                          "/dashboard/transactionreport"
+                        }
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
                       >
                         Transaction Report
-                      </a>
+                      </NavLink>
                       <a
                         href="#"
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"

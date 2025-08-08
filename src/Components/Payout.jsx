@@ -68,9 +68,9 @@ const Payout = () => {
    
   ];
   return (
-    <div className=" w-[100%] rounded-2xl sm:h-[500px] h-[600px] flex flex-col">
-      <main className="w-full h-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
-        <section className="w-full flex flex-col sm:flex-row  gap-[20px] mt-[20px] sm:min-h-[600px] sm:h-[600px] px-[2px] sm:px-[20px]">
+    <div className=" w-[100%] rounded-2xl sm:h-[500px] xl:h-[640px] 2xl:h-[790px]  lg:h-[650px] h-[600px] flex flex-col">
+      <main className="w-full h-[600px]  lg:h-[575px] xl:h-[550px] 2xl:h-[780px]  sm:h-[475px] flex flex-col overflow-y-scroll">
+        <section className="w-full flex flex-col sm:flex-row  gap-[20px] mt-[20px] sm:min-h-[600px] 2xl:h-[780px]  sm:h-[600px] px-[2px] sm:px-[20px]">
         <form className="sm:w-[30%] border-gray-200 border w-full  flex flex-col gap-4 rounded-xl bg-white">
               <div className="border-b-gray-200 border-b-[1px] w-full p-4">
               <h2 className="text-[16px] font-semibold text-gray-800 ">

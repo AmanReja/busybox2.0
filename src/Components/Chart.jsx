@@ -72,7 +72,7 @@ const Chart = () => {
       <ReactApexChart
         options={options}
         series={series}
-        type="line"
+        type="area"
         height={320}
       />
     </div>
