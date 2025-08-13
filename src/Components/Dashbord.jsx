@@ -5,6 +5,7 @@ import i5 from "../assets/images/5.png";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Arrow from "../assets/icons/arrow.svg";
 import { ToastContainer } from "react-toastify";
+import Subfooter from "./Subfooter";
 
 const Dashbord = () => {
   const [shows, setShows] = useState(false);
@@ -79,10 +80,10 @@ const Dashbord = () => {
   ];
   return (
     <>
-      <div className="w-full h-[100vh] bg-sky-100  flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
+      <div className="w-full h-screen  bg-sky-100 flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
-        <div className="w-full flex-col sm:flex-row flex">
-          <div className="flex flex-row h-[90px] sm:w-[4%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[10px]  sm:gap-[20px] w-full">
+        <div className="w-full flex-col  h-screen pb-[100px] sm:flex-row flex">
+          <div className="flex flex-row h-full  sm:w-[4%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[10px]  sm:gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
@@ -110,7 +111,7 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] h-[700px] sm:h-[580px] lg:h-[650px] xl:h-[640px] 2xl:h-[850px] rounded-2xl border-gray-300 border-[1px] bg-white">
+          <div className="ml-0 sm:ml-1 w-full sm:w-[94%]  h-full rounded-2xl border-gray-300 border-[1px] bg-white">
             <header className="w-full sm:h-[54px] h-[90px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
@@ -212,7 +213,7 @@ const Dashbord = () => {
                   <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <div className="flex flex-col gap-2 text-gray-700 text-sm">
                       <NavLink
-                      to={"/dashboard/singleenath"}
+                        to={"/dashboard/singleenath"}
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
                       >
                         Single eNach
@@ -230,9 +231,7 @@ const Dashbord = () => {
                         Cancel eNach
                       </a>
                       <NavLink
-                        to={
-                          "/dashboard/transactionreport"
-                        }
+                        to={"/dashboard/transactionreport"}
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
                       >
                         Transaction Report
@@ -294,7 +293,7 @@ const Dashbord = () => {
 
                 <NavLink
                   className="flex justify-center items-center cursor-pointer"
-                 to={"/dashboard/ledger"}
+                  to={"/dashboard/ledger"}
                 >
                   Ledger
                 </NavLink>
