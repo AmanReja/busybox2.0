@@ -301,6 +301,7 @@ const Dashbord = () => {
             </header>
 
             <Outlet></Outlet>
+            <Subfooter></Subfooter>
           </div>
         </div>
       </div>

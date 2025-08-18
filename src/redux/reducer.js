@@ -1,41 +1,70 @@
+// reducer.js
+
 import {
-    ADD_PAYMENT,
-    UPDATE_PAYMENT,
-    GETALL_PAYMENT,
-    DELETE_PAYMENT,
-  } from "./action";
-  
-  const initialstate = {
-    payment: [],
-  };
-  
-  const paymentReducer = (state = initialstate, action) => {
-    if (action.type === ADD_PAYMENT) {
-      return {
-        ...state,
-        payment: [...state.payment, action.payload], 
-      };
-    } else if (action.type === GETALL_PAYMENT) {
-      return {
-        ...state,
-        payment: action.payload, 
-      };
-    } else if (action.type === UPDATE_PAYMENT) {
-      return {
-        ...state,
-        payment: state.payment.map((pmt) =>
-          pmt.id === action.payload.id ? action.payload : pmt
-        ),
-      };
-    } else if (action.type === DELETE_PAYMENT) {
-      return {
-        ...state,
-        payment: state.payment.filter((pmt) => pmt.id !== action.payload),
-      };
-    } else {
-      return state; 
-    }
-  };
-  
-  export default paymentReducer;
-  
+  GETALL_LEDGER_WALLET,
+  GETALL_PAYOUTLOG_DATA,
+  GETALL_BULKPAY_DATA,
+  GETALL_WALLET_COMPANY_DATA
+} from "./action";
+
+const initialLedgerWalletState = {
+  ledgerwallet: [],
+};
+
+export const ledgerwalletReducer = (
+  state = initialLedgerWalletState,
+  action
+) => {
+  if (action.type === GETALL_LEDGER_WALLET) {
+    return {
+      ...state,
+      ledgerwallet: action.payload,
+    };
+  } else {
+    return state;
+  }
+};
+
+const initialPayoutLogState = {
+  payoutlog: [],
+};
+
+export const payoutlogReducer = (state = initialPayoutLogState, action) => {
+  if (action.type === GETALL_PAYOUTLOG_DATA) {
+    return {
+      ...state,
+      payoutlog: action.payload,
+    };
+  } else {
+    return state;
+  }
+};
+
+const initialbulkpaystate = {
+  bulkpayout: [],
+};
+
+export const bulkpayoutReducer = (state = initialbulkpaystate, action) => {
+  if (action.type === GETALL_BULKPAY_DATA) {
+    return {
+      ...state,
+      bulkpayout: action.payload,
+    };
+  } else {
+    return state;
+  }
+};
+const initialwalletcompanystate = {
+  walletcompany: [],
+};
+
+export const walletcompanyReducer = (state = initialwalletcompanystate, action) => {
+  if (action.type === GETALL_WALLET_COMPANY_DATA) {
+    return {
+      ...state,
+      walletcompany: action.payload,
+    };
+  } else {
+    return state;
+  }
+};

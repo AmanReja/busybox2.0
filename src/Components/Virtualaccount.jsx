@@ -124,8 +124,8 @@ const Virtualaccount = () => {
     },
   ];
   return (
-    <div className=" w-[100%] rounded-2xl h-[600px] 2xl:h-[790px] flex flex-col">
-      <main className="w-fullh-[600px]  sm:h-[475px] 2xl:h-[780px] flex flex-col overflow-y-scroll">
+    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
+      <main className="w-full h-full flex flex-col overflow-y-scroll">
       <section className="w-full px-5 mt-5">
       <div className="w-full h-[80px]  bg-white flex items-center px-5 ">
   <div className="flex gap-[5px] h-full items-center w-full">

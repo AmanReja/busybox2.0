@@ -1,70 +1,66 @@
-// EarningsChart.jsx
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 const Chart = () => {
   const series = [
     {
-      name: "Earnings",
-      data: [100, 200, 150, 250, 300, 280, 350],
+      name: "series1",
+      data: [10, 20, 30, 45, 32, 35, 50],
+    },
+    {
+      name: "series2",
+      data: [15, 25, 35, 40, 38, 52, 42],
     },
   ];
 
   const options = {
     chart: {
-      type: "line",
+      height: 350,
+      type: "area",
       toolbar: {
-        show: false, // Hide export/download/zoom buttons
-      },
-      zoom: {
-        enabled: false,
+        show: true,
       },
     },
-    stroke: {
-      curve: "smooth",
-      width: 3,
-    },
-    markers: {
-      size: 5,
-    },
-    xaxis: {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-      title: {
-        text: "Month",
-        style: {
-          fontSize: "14px",
-        },
-      },
-    },
-    yaxis: {
-      // title: {
-      //   text: "Earnings (in K)",
-      //   style: {
-      //     fontSize: "14px",
-      //   },
-      // },
-      labels: {
-        formatter: (val) => `${val}k`,
-      },
-    },
-    colors: ["#42adf5"],
     dataLabels: {
       enabled: false,
     },
-    legend: {
-      show: false, // Hides top legend label
+    stroke: {
+      curve: "smooth",
+      width: 2,
     },
-    fill: {
-      type: "solid",
-      gradient: {
-        shade: "light",
-        type: "vertical",
-        shadeIntensity: 0.4,
-        gradientToColors: ["red"],
-        opacityFrom: 0.7,
-        opacityTo: 0.1,
+    xaxis: {
+      type: "datetime",
+      categories: [
+        "2018-09-19T00:00:00.000Z",
+        "2018-09-19T01:30:00.000Z",
+        "2018-09-19T02:30:00.000Z",
+        "2018-09-19T03:30:00.000Z",
+        "2018-09-19T04:30:00.000Z",
+        "2018-09-19T05:30:00.000Z",
+        "2018-09-19T06:30:00.000Z",
+      ],
+    },
+    tooltip: {
+      x: {
+        format: "HH:mm",
       },
     },
+    legend: {
+      position: "bottom",
+      labels: {
+        colors: "#444",
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.8,
+        opacityTo: 0.3,
+        stops: [0, 90, 100],
+      },
+    },
+    colors: ["#80ffdb", "#00b4d8"],
   };
 
   return (

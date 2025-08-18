@@ -1,93 +1,100 @@
 import React, { useEffect } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
+import { useSelector, useDispatch } from "react-redux";
+import { getall_payoutlog_data } from "../redux/action";
 
 const Report = () => {
-  const getalldata = async () => {
-    const res = await fetch(`https://api.busybox.in/payment/payment`);
-    const data = await res.json();
-    console.log(12, data);
-  };
+
+
+  const dispatch = useDispatch();
+  const payoutdata = useSelector((state) => state.payoutlog.payoutlog.data);
+  
+
+
 
   useEffect(() => {
-    getalldata();
-  }, []);
+    dispatch(getall_payoutlog_data());
+  }, [dispatch]);
 
-  const transactions = [
-    {
-      status: "Success",
-      date: "2025-07-24",
-      utr: "UTR12345678",
-      account: "Aman Reja - HDFC ****1234",
-      amount: 5000,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-23",
-      utr: "UTR87654321",
-      account: "Nisha Patel - SBI ****4321",
-      amount: 2300,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-22",
-      utr: "UTR34984576",
-      account: "Rahul Kumar - ICICI ****9876",
-      amount: 1500,
-    },
-    {
-      status: "Success",
-      date: "2025-07-21",
-      utr: "UTR45238765",
-      account: "Priya Sharma - Axis ****1122",
-      amount: 6200,
-    },
-    {
-      status: "Success",
-      date: "2025-07-20",
-      utr: "UTR99887766",
-      account: "Vikas Singh - Kotak ****3344",
-      amount: 4800,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-19",
-      utr: "UTR56473829",
-      account: "Sneha Roy - Yes Bank ****5566",
-      amount: 1200,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-18",
-      utr: "UTR83726194",
-      account: "Alok Mehta - BOI ****7788",
-      amount: 3000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-17",
-      utr: "UTR26473829",
-      account: "Meena Verma - Union ****9900",
-      amount: 7000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-16",
-      utr: "UTR92736455",
-      account: "Suresh Raina - PNB ****1111",
-      amount: 5400,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-15",
-      utr: "UTR37482736",
-      account: "Geeta Das - UCO ****2222",
-      amount: 2500,
-    },
-  ];
+
+  console.log(payoutdata, 15);
+
+  console.log(Array.isArray(payoutdata));
+
+  const fiterpayoutpending = payoutdata?.filter((payout,index)=>payout?.status=="PENDING")
+
+  console.log(fiterpayoutpending);
+  const fiterpayoutfailed = payoutdata?.filter((payout,index)=>payout?.status=="FAILED")
+
+  console.log(33,fiterpayoutfailed);
+  
+
+  const failed = fiterpayoutfailed?.reduce((acc, item) => {
+
+
+    const amount = parseFloat(item?.settlement_amount || 0);
+    console.log(`Adding: ${amount}`);
+    return acc + amount;
+  }, 0);
+  console.log(failed);
+
+
+const pendingpayouts = fiterpayoutpending?.reduce((acc, item) => {
+  const amount = parseFloat(item?.settlement_amount || 0);
+  console.log(`Adding: ${amount}`);
+  return acc + amount;
+}, 0);
+console.log(pendingpayouts);
+
+
+
+
+
+
+
+
+
+
+
+
+const payouts = payoutdata?.reduce((acc, item) => {
+  const amount = parseFloat(item?.settlement_amount || 0);
+  console.log(`Adding: ${amount}`);
+  return acc + amount;
+}, 0);
+console.log(payouts);
+
+
+
+const statusCounts = payoutdata?.reduce((acc, item) => {
+  acc[item.status] = (acc[item.status] || 0) + 1;
+  return acc;
+}, {});
+
+
+
+
+console.log(56,statusCounts);
+
+const totalstatus = (statusCounts?.SUCCESS+statusCounts?.FAILED+statusCounts?.PENDING);
+const Successrate = (statusCounts?.SUCCESS / totalstatus) * 100
+
+
+console.log(Successrate);
+  
+
+
+
+
+
+
+
+
+  
   return (
-    <div className=" w-[100%] rounded-2xl h-[600px] flex flex-col">
-      <main className="w-fullh-[600px]  sm:h-[475px] flex flex-col overflow-y-scroll">
+    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
+      <main className="w-full h-full flex flex-col overflow-y-scroll">
       <section className="w-full px-5 mt-5">
       <div className="w-full h-[80px]  bg-white flex items-center px-5 ">
   <div className="flex gap-[5px] h-full items-center w-full">
@@ -107,10 +114,10 @@ const Report = () => {
 
   <div className="flex flex-col sm:flex-row gap-5 bg-white  rounded-xl p-5">
     {[
-      { label: 'Payout Value', value: '₹663,062.00' },
-      { label: 'Success Rate', value: '0.0%' },
-      { label: 'Pending Payouts', value: '₹10,000.00' },
-      { label: 'Failure', value: '₹18,870.00' },
+      { label: 'Payout Value', value: payouts },
+      { label: 'Success Rate', value: `${Successrate}%` },
+      { label: 'Pending Payouts', value: pendingpayouts },
+      { label: 'Failure', value: failed},
     ].map((item, index) => (
       <div
         key={index}
@@ -233,10 +240,21 @@ const Report = () => {
       </svg>
     </div>
   </div></th>
+                  <th className="px-4 py-3"><div className="flex items-center space-x-1">
+    <p>Txn Charges</p>
+    <div className="flex flex-col justify-center items-center leading-none">
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#1f1f1f" className="-mb-[4px]">
+        <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z"/>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="#dbdad7" className="-mt-[4px]">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+      </svg>
+    </div>
+  </div></th>
                 </tr>
               </thead>
               <tbody className="text-[12px] font-semibold">
-                {transactions.map((txn, i) => (
+                {payoutdata?.map((txn, i) => (
                   <tr
                     key={i}
                     className="border-b border-gray-100 hover:bg-gray-50"
@@ -244,9 +262,9 @@ const Report = () => {
                     <td className="px-4 py-2">
                       <span
                         className={`text-white rounded-[3px] px-[13px] py-[2px] text-center content-center min-w-[80px] h-[5px] w-[80px] font-bold text-[12px] ${
-                          txn.status === "Success"
+                          txn.status === "SUCCESS"
                             ? "bg-green-400"
-                            : txn.status === "Pending"
+                            : txn.status === "PENDING"
                             ? "bg-yellow-400"
                             : "bg-red-400"
                         }`}
@@ -254,11 +272,25 @@ const Report = () => {
                         {txn.status}
                       </span>
                     </td>
-                    <td className="px-4 py-5">{txn.date}</td>
-                    <td className="px-4 py-5">{txn.utr}</td>
-                    <td className="px-4 py-5">{txn.account}</td>
+                    <td className="px-4 py-5">{txn.txn_date}</td>
                     <td className="px-4 py-5">
-                      ₹{txn.amount.toLocaleString()}
+                    <div className="flex flex-col">
+                      <p>UTR:{txn.rrn}</p>
+                      <p>[request ID:#{txn.paytmOrderId}]</p>
+                    </div>
+                    </td>
+                    <td className="px-4 py-5">
+                    <div className="flex flex-col">
+                      <p>A/C:{txn.account_no
+}</p>
+                      <p>[IFSC Code:{txn.ifsc_code}]</p>
+                    </div>
+                    </td>
+                    <td className="px-4 py-5">
+                      {txn.settlement_amount}
+                    </td>
+                    <td className="px-4 py-5">
+                      {txn.settlement_charge}
                     </td>
                   </tr>
                 ))}
@@ -267,18 +299,7 @@ const Report = () => {
           </div>
         </div>
 
-        <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
-          <h1 className="text-gray-500 text-[14px]">2024© Busybox.</h1>
-          <div
-            style={{ fontFamily: "montserrat" }}
-            className="flex min-w-[235px] text-[14px] w-[235px] h-full items-center gap-[10px] text-gray-500 justify-between"
-          >
-            <a href="">Docs</a>
-            <a href="">FAQ</a>
-            <a href="">Support</a>
-            <a href="">License</a>
-          </div>
-        </footer>
+       
       </main>
     </div>
   );

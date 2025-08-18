@@ -4,8 +4,31 @@ import Chart from "./Chart";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { useParams, useLocation } from "react-router-dom";
 import bg3 from "../assets/images/bg-3.png";
+import Subfooter from "./Subfooter";
+import { useSelector, useDispatch } from "react-redux";
+import { getall_payoutlog_data,getall_wallet_company_data } from "../redux/action";
 
 const Summery = () => {
+
+
+
+  const dispatch = useDispatch();
+  const payoutdata = useSelector((state) => state.payoutlog.payoutlog.data);
+  const walletdata = useSelector((state) => state.walletcompany.walletcompany.total);
+  console.log(18,walletdata);
+  
+
+
+
+  useEffect(() => {
+    dispatch(getall_payoutlog_data())
+    dispatch(getall_wallet_company_data())
+    
+  }, [dispatch]);
+
+
+  const totallpayouts = payoutdata?.length;
+
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const loginSuccess = params.get("login");
@@ -32,7 +55,7 @@ const Summery = () => {
   const icons = [
     {
       icon: "fa-solid fa-arrow-right",
-      num: 36,
+      num: totallpayouts,
       text: "Payouts",
       deg: "-50deg",
     },
@@ -59,13 +82,13 @@ const Summery = () => {
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className=" w-[100%] rounded-2xl h-[90%]  flex flex-col">
+      <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%]  flex flex-col">
         <main className="w-full  h-full flex flex-col overflow-y-scroll">
           <div className="w-full sm:h-[50px] h-[90px] sm:flex-row flex-col px-[20px] flex items-center justify-between mt-[2px] sm:mt-[30px] ">
             <h1 className="text-[23px] font-semibold">Dashboard Summary</h1>
             <div className="h-full w-full sm:w-[360px] gap-[10px] flex">
               <div className="border-dashed rounded flex flex-col w-[105px] border-gray-400 border-[1px] text-center gap-[2px] p-[5px]">
-                <p className="text-[12px]  font-semibold">₹ 105591.682</p>
+                <p className="text-[12px]  font-semibold">₹ {walletdata}</p>
                 <p className="text-[12px] font-normal text-gray-500">
                   Wallet Balance
                 </p>
@@ -197,18 +220,7 @@ const Summery = () => {
               </div>
             </div>
           </section>
-          <footer className="w-full min-h-[60px]  flex px-[20px] justify-between items-center">
-            <h1 className=" text-gray-500 text-[14px]">2024© Busybox.</h1>
-            <div
-              style={{ fontFamily: "montserrat" }}
-              className="flex min-w-[235px]  text-[14px] w-[235px] h-full items-center gap-[10px] text-gray-500 justify-between"
-            >
-              <a href="">Docs</a>
-              <a href="">FAQ</a>
-              <a href="">Support</a>
-              <a href="">License</a>
-            </div>
-          </footer>
+         
         </main>
       </div>
     </>

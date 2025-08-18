@@ -1,92 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
+import {useDispatch, useSelector } from "react-redux";
+import { getall_wallet_company_data } from "../redux/action";
 
 const Addmoney = () => {
-  const getalldata = async () => {
-    const res = await fetch(`https://api.busybox.in/payment/payment`);
-    const data = await res.json();
-    console.log(12, data);
-  };
+  const [walldata,setWalldata] = useState([])
+
+  const dispatch = useDispatch();
+  const walletcompanydata = useSelector((state)=>state.walletcompany.walletcompany.data)
+  
+
+
+  function setwall() {
+    setWalldata(walletcompanydata)
+  }
+
+  console.log(55,walldata);
+
+
 
   useEffect(() => {
-    getalldata();
-  }, []);
+   dispatch(getall_wallet_company_data()),setwall()
+  }, [dispatch]);
 
-  const transactions = [
-    {
-      status: "Success",
-      date: "2025-07-24",
-      utr: "UTR12345678",
-      account: "Aman Reja - HDFC ****1234",
-      amount: 5000,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-23",
-      utr: "UTR87654321",
-      account: "Nisha Patel - SBI ****4321",
-      amount: 2300,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-22",
-      utr: "UTR34984576",
-      account: "Rahul Kumar - ICICI ****9876",
-      amount: 1500,
-    },
-    {
-      status: "Success",
-      date: "2025-07-21",
-      utr: "UTR45238765",
-      account: "Priya Sharma - Axis ****1122",
-      amount: 6200,
-    },
-    {
-      status: "Success",
-      date: "2025-07-20",
-      utr: "UTR99887766",
-      account: "Vikas Singh - Kotak ****3344",
-      amount: 4800,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-19",
-      utr: "UTR56473829",
-      account: "Sneha Roy - Yes Bank ****5566",
-      amount: 1200,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-18",
-      utr: "UTR83726194",
-      account: "Alok Mehta - BOI ****7788",
-      amount: 3000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-17",
-      utr: "UTR26473829",
-      account: "Meena Verma - Union ****9900",
-      amount: 7000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-16",
-      utr: "UTR92736455",
-      account: "Suresh Raina - PNB ****1111",
-      amount: 5400,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-15",
-      utr: "UTR37482736",
-      account: "Geeta Das - UCO ****2222",
-      amount: 2500,
-    },
-  ];
+
+//   const walletReducer = walletcompanydata.reduce((acc, bal) => acc + bal.wallet_balance, 0);
+
+
+// console.log(18,walletReducer);
+ 
   return (
-    <div className=" w-[100%] rounded-2xl h-[90%] flex flex-col">
+    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
       <main className="w-full  h-full flex-col overflow-y-scroll">
         <section className="w-full flex gap-5 sm:min-h-[900px] h-auto  sm:h-[900px] mt-5 px-5">
           <div className="w-full  flex-col sm:flex-row flex  h-full gap-5 bg-white p-5 rounded-xl ">
@@ -157,11 +102,11 @@ const Addmoney = () => {
                     <h1 className="text-lg font-semibold text-gray-800">
                       Payout Fund
                     </h1>
-                    <p className="text-sm text-gray-400">Active</p>
+                    <p className="text-sm text-gray-400"></p>
                   </div>
                 </div>
                 <h1 className="text-lg font-bold text-gray-800">
-                  ₹ 8,60,518.33
+                  ₹
                 </h1>
               </div>
 
@@ -175,10 +120,12 @@ const Addmoney = () => {
                     <h1 className="text-lg font-semibold text-gray-800">
                       Card Balance
                     </h1>
-                    <p className="text-sm text-gray-400">Active</p>
+                    <p className="text-sm text-gray-400"></p>
                   </div>
                 </div>
-                <h1 className="text-lg font-bold text-gray-800">₹ 0.00</h1>
+                <h1 className="text-lg font-bold text-gray-800">
+                  ₹ 
+                </h1>
               </div>
 
               <div className="bg-white shadow rounded-xl ">
@@ -384,7 +331,7 @@ const Addmoney = () => {
                 </tr>
               </thead>
               <tbody className="text-[12px] font-semibold">
-                {transactions.map((txn, i) => (
+                {walletcompanydata?.map((txn, i) => (
                   <tr
                     key={i}
                     className="border-b border-gray-100 hover:bg-gray-50"
@@ -392,9 +339,9 @@ const Addmoney = () => {
                     <td className="px-4 py-2">
                       <span
                         className={`text-white rounded-[3px] px-[13px] py-[2px] text-center content-center min-w-[80px] h-[5px] w-[80px] font-bold text-[12px] ${
-                          txn.status === "Success"
+                          txn.status === "SUCCESS"
                             ? "bg-green-400"
-                            : txn.status === "Pending"
+                            : txn.status === "PENDING"
                             ? "bg-yellow-400"
                             : "bg-red-400"
                         }`}
@@ -402,11 +349,11 @@ const Addmoney = () => {
                         {txn.status}
                       </span>
                     </td>
-                    <td className="px-4 py-5">{txn.date}</td>
+                    <td className="px-4 py-5">{txn.last_update}</td>
                     <td className="px-4 py-5">{txn.utr}</td>
                     <td className="px-4 py-5">{txn.account}</td>
                     <td className="px-4 py-5">
-                      ₹{txn.amount.toLocaleString()}
+                     {txn.hold_balance}
                     </td>
                   </tr>
                 ))}
@@ -414,19 +361,6 @@ const Addmoney = () => {
             </table>
           </div>
         </div>
-
-        <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
-          <h1 className="text-gray-500 text-[14px]">2024© Busybox.</h1>
-          <div
-            style={{ fontFamily: "montserrat" }}
-            className="flex min-w-[235px] text-[14px] w-[235px] h-full items-center gap-[10px] text-gray-500 justify-between"
-          >
-            <a href="">Docs</a>
-            <a href="">FAQ</a>
-            <a href="">Support</a>
-            <a href="">License</a>
-          </div>
-        </footer>
       </main>
     </div>
   );

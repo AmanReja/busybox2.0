@@ -1,95 +1,33 @@
 import React, { useEffect, useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
+import { useSelector, useDispatch } from "react-redux";
+import { getall_ledgerwallet_data } from "../redux/action";
 
 const Ledger = () => {
   const [searchdate, setSearchdate] = useState("");
+  const [searchtr, setSearchtr] = useState("");
+  const [trstatus, setTrstatus] = useState("");
 
-  const date = new Date();
-  const getalldata = async () => {
-    const res = await fetch(`https://api.busybox.in/payment/payment`);
-    const data = await res.json();
-    console.log(12, data);
-  };
+  const dispatch = useDispatch();
+
+  const token = localStorage.getItem("token");
+  console.log(token);
+
+  const trdata = useSelector(
+    (state) => state.ledgerwallet.ledgerwallet.transactions
+  );
+
+  console.log(55, trdata);
 
   useEffect(() => {
-    getalldata();
-  }, []);
+    dispatch(getall_ledgerwallet_data(searchtr, trstatus));
+  }, [dispatch, searchtr, trstatus]);
 
-  const transactions = [
-    {
-      status: "Success",
-      date: "2025-07-29 17:15:51",
-      utr: "UTR12345678",
-      account: "Aman Reja - HDFC ****1234",
-      amount: 5000,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-23",
-      utr: "UTR87654321",
-      account: "Nisha Patel - SBI ****4321",
-      amount: 2300,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-22",
-      utr: "UTR34984576",
-      account: "Rahul Kumar - ICICI ****9876",
-      amount: 1500,
-    },
-    {
-      status: "Success",
-      date: "2025-07-21",
-      utr: "UTR45238765",
-      account: "Priya Sharma - Axis ****1122",
-      amount: 6200,
-    },
-    {
-      status: "Success",
-      date: "2025-07-20",
-      utr: "UTR99887766",
-      account: "Vikas Singh - Kotak ****3344",
-      amount: 4800,
-    },
-    {
-      status: "Failed",
-      date: "2025-07-19",
-      utr: "UTR56473829",
-      account: "Sneha Roy - Yes Bank ****5566",
-      amount: 1200,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-18",
-      utr: "UTR83726194",
-      account: "Alok Mehta - BOI ****7788",
-      amount: 3000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-17",
-      utr: "UTR26473829",
-      account: "Meena Verma - Union ****9900",
-      amount: 7000,
-    },
-    {
-      status: "Success",
-      date: "2025-07-16",
-      utr: "UTR92736455",
-      account: "Suresh Raina - PNB ****1111",
-      amount: 5400,
-    },
-    {
-      status: "Pending",
-      date: "2025-07-15",
-      utr: "UTR37482736",
-      account: "Geeta Das - UCO ****2222",
-      amount: 2500,
-    },
-  ];
+  const date = new Date();
+
   return (
-    <div className=" w-[100%] rounded-2xl h-[90%] flex flex-col">
+    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
       <main className="w-fullh-[600px] h-full flex flex-col overflow-y-scroll">
         <section className="w-full px-5 mt-5">
           <div className="w-full h-[80px]  bg-white flex items-center px-5 ">
@@ -113,7 +51,7 @@ const Ledger = () => {
           </div>
         </section>
 
-        <div className="w-full px-[20px] mt-[20px]">
+        <div className="w-full  px-[20px] mt-[20px]">
           <div className="flex w-[100%] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
             <div className="flex justify-between items-center p-4 py-6  w-full flex-wrap gap-4 bg-white shadow-sm ">
               <h2 className="text-lg font-semibold text-gray-800">
@@ -139,6 +77,9 @@ const Ledger = () => {
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </span>
                   <input
+                    onChange={(e) => {
+                      setSearchtr(e.target.value);
+                    }}
                     type="text"
                     placeholder="Search transaction"
                     className="pl-8 pr-2 outline-none text-sm text-gray-700 bg-transparent"
@@ -146,13 +87,18 @@ const Ledger = () => {
                 </div>
 
                 <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white">
-                  <select className="text-sm text-gray-700 bg-transparent outline-none">
-                    <option value="All Transactions">All Transactions</option>
-                    <option value="Success">Success</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Failed" selected>
-                      Failed
+                  <select
+                    onChange={(e) => {
+                      setTrstatus(e.target.value);
+                    }}
+                    className="text-sm text-gray-700 bg-transparent outline-none"
+                  >
+                    <option selected value="All">
+                      All Transactions
                     </option>
+                    <option value="SUCCESS">Success</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="FAILED">Failed</option>
                   </select>
                 </div>
 
@@ -230,7 +176,7 @@ const Ledger = () => {
               </thead>
 
               <tbody className="text-[13px] font-medium">
-                {transactions.map((txn, i) => (
+                {trdata?.map((txn, i) => (
                   <tr
                     key={i}
                     className="border-b border-gray-100 hover:bg-gray-50 transition"
@@ -238,44 +184,55 @@ const Ledger = () => {
                     <td className="px-4 py-4 align-top">
                       <div className="space-y-2">
                         <p className="text-sm text-gray-700 font-medium">
-                          REQUEST ID:{" "}
+                          REQUEST ID:{txn.order_id}
                           <span className="font-semibold text-gray-900">
                             {txn.utr}
                           </span>
                         </p>
-                        <div className="flex items-center space-x-2 text-xs font-semibold">
-                          <span className="flex items-center justify-center w-6 h-6 bg-green-100 border border-green-300 text-green-700 rounded">
+                        <div className="flex items-center space-x-2 text-xs font-semibold">{
+                          txn.txn_mode =="DR"?<span className="flex items-center justify-center w-6 h-6 bg-red-100 border border-red-300 text-red-700 rounded">
+                          DR
+                        </span>:<span className="flex items-center justify-center w-6 h-6 bg-green-100 border border-green-300 text-green-700 rounded">
                             CR
                           </span>
+                        }
+                          
                           <span className="text-gray-400">|</span>
                           <span className="flex items-center justify-center w-[80px] h-6 bg-gray-100 border border-gray-300 text-gray-700 rounded">
-                            REFUND
+                            {txn.txn_type}
                           </span>
                         </div>
                       </div>
                     </td>
 
-                    <td className="px-4 py-4">{txn.date}</td>
-
-                    <td className="px-4 py-4">{txn.utr}</td>
-
-                    <td className="px-4 py-4">{txn.account}</td>
+                    <td className="px-4 py-4">{txn.date_time}</td>
 
                     <td className="px-4 py-4">
-                      ₹{txn.amount.toLocaleString()}
+                      <div className="flex flex-col">
+                        <p className="font-bold">TXN Amount:{txn.txn_amount}</p>
+                        <p className="font-bold">
+                          TXN Charges:{txn.commission_amount}
+                        </p>
+                      </div>
+                    </td>
+
+                    <td className="px-4 py-4">{txn.post_balance}</td>
+
+                    <td className="px-4 py-4">
+                      {txn.remark}
                     </td>
 
                     <td className="px-4 py-4">
                       <span
                         className={`text-white rounded-[4px] px-3 py-1 min-w-[80px] text-center inline-block font-bold text-[12px] ${
-                          txn.status === "Success"
+                          txn.txn_status === "SUCCESS"
                             ? "bg-green-500"
-                            : txn.status === "Pending"
+                            : txn.txn_status === "PENDING"
                             ? "bg-yellow-400 text-black"
                             : "bg-red-400"
                         }`}
                       >
-                        {txn.status}
+                        {txn.txn_status}
                       </span>
                     </td>
                   </tr>
@@ -322,7 +279,7 @@ const Ledger = () => {
           </div>
         </div>
 
-        <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
+        {/* <footer className="w-full min-h-[60px] flex px-[20px] justify-between items-center">
           <h1 className="text-gray-500 text-[14px]">2024© Busybox.</h1>
           <div
             style={{ fontFamily: "montserrat" }}
@@ -333,7 +290,7 @@ const Ledger = () => {
             <a href="">Support</a>
             <a href="">License</a>
           </div>
-        </footer>
+        </footer> */}
       </main>
     </div>
   );

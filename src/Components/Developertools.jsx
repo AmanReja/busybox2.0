@@ -1,77 +1,94 @@
-import React, { useEffect } from "react";
-import Chart from "./Chart";
-import Hdfc from "../assets/images/HDFC.png";
-import pat from "../assets/images/pat.png";
+import React from "react";
 import hand from "../assets/images/hand.png";
-import { Outlet } from "react-router-dom";
-import adhar from "../assets/icons/aadhaar.svg"
-import gst from "../assets/icons/calculate.png"
-import man from "../assets/icons/man.png"
-import confetti from "../assets/icons/confetti.png"
-import line from "../assets/icons/line.svg"
-import card from "../assets/icons/card.png"
-import bank from "../assets/icons/bank.png"
-import user from "../assets/icons/user.png"
-import chip from "../assets/icons/cpu.png"
+import Subfooter from "./Subfooter";
 
 const Developertools = () => {
-    return (
-        <>
+  return (
+    <div className="w-full h-auto font-[Montserrat] space-y-6">
+      {/* Header Card */}
+      <div className="relative overflow-hidden rounded-xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-700 shadow-2xl">
+        {/* Animated Grid Background */}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:40px_40px] animate-[slowpan_20s_linear_infinite]"></div>
 
+        {/* Glow Overlay */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500/30 blur-3xl rounded-full -z-10"></div>
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full -z-10"></div>
 
-            <div className='w-full h-auto'>
+        {/* Text Content */}
+        <div className="flex flex-col gap-4 text-center md:text-left max-w-2xl">
+          <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+            Developer Controls
+          </h1>
+          <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+            Access powerful developer tools including API keys, whitelists, and
+            webhooks for secure integrations. Check our{" "}
+            <a
+              className="underline font-semibold text-blue-300 hover:text-blue-200"
+              href=""
+            >
+              API Documentation
+            </a>{" "}
+            for smooth implementation and deeper technical details.
+          </p>
+        </div>
 
+        {/* Image */}
+        <img
+          className="w-40 md:w-48 h-auto object-contain drop-shadow-lg"
+          src={hand}
+          alt="Developer Tools"
+        />
+      </div>
 
-
-
-                <div className="flex   bg-gradient-to-br from-black to-gray-700 justify-between items-center rounded-xl">
-                    <div className="flex flex-col   h-[150px] gap-[10px] p-4 py-[50px] justify-center rounded-xl">
-                        <h1 style={{ fontFamily: "Montserrat" }} className="text-[18px] font-bold text-white">Developer Controls</h1>
-                        <p style={{ fontFamily: "Montserrat" }} className="text-[12px]  w-[630px] text-white leading-4">Explore bobust controlles like API keys, whitelists, and webhooks for secure integration. Find comprehensive <a className="underline font-bold text-blue-400" href="">API Documentations</a> for seamless implemantations and a deeper understanding of our service </p>
-                    </div>
-
-
-                    <img className="w-[180px] h-[140px] object-contain" src={hand} alt="" />
-                </div>
-
-
-
-
-
-
-
-
-
-                <div className="flex flex-row  border-gray-200 border w-full rounded-2xl mt-[30px] justify-between shadow-md h-[180px] items-center p-6 gap-[20px] bg-lime-100 ">
-
-                    <div>
-                        <h1 style={{ fontFamily: "Montserrat" }} className="text-[15px] font-bold   ">API Key</h1>
-                        <p style={{ fontFamily: "Montserrat" }} className="text-[13px] text-gray-800 font-normal  w-[630px] leading-6 ">The API Key section allows you to access and integrate with our banking APIs securely. Use this key to authenticate your requests and manage transactions programmatically. Please ensure that your key is stored securely and not shared publicly. <a className="underline font-bold" href="">API Documentations</a></p>
-                    </div>
-                    <div className="flex justify-center items-center gap-[10px]">
-                        <button className="p-2 px-[20px] text-white bg-amber-500 rounded-xl outline-none hover:shadow-md hover:shadow-blue-500 hover:scale-105 duration-300"> Regenerate Token</button> <div className="flex rounded outline-none border-gray-500 border justify-center items-center "><input className="py-[8px]  outline-none px-[10px]" placeholder="XXXXXXXXXX" type="text" />
-                            <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 8V7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5H17C17.9428 5 18.4142 5 18.7071 5.29289C19 5.58579 19 6.05719 19 7V12C19 12.9428 19 13.4142 18.7071 13.7071C18.4142 14 17.9428 14 17 14H16M7 19H12C12.9428 19 13.4142 19 13.7071 18.7071C14 18.4142 14 17.9428 14 17V12C14 11.0572 14 10.5858 13.7071 10.2929C13.4142 10 12.9428 10 12 10H7C6.05719 10 5.58579 10 5.29289 10.2929C5 10.5858 5 11.0572 5 12V17C5 17.9428 5 18.4142 5.29289 18.7071C5.58579 19 6.05719 19 7 19Z" stroke="#464455" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
-                    </div>
-
-
-
-
-                </div>
-                <div className="flex border-gray-200 border w-full rounded-2xl mt-[30px] shadow-md h-[100px] flex-col p-4 gap-[20px] bg-violet-200 ">
-
-
-
-                    <h1 style={{ fontFamily: "Montserrat" }} className="text-[15px] font-bold   ">Webhooks</h1>
-                    <p style={{ fontFamily: "Montserrat" }} className="text-[15px]   w-[630px] ">Receive callback for every transaction to fully automate <a className="underline font-bold" href="">Learn more</a></p>
-
-
-                </div>
-
-
+      {/* API Key Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 border border-gray-200 rounded-2xl bg-white shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-lg font-bold text-gray-900">API Key</h2>
+          <p className="text-sm text-gray-700 max-w-xl leading-relaxed">
+            Securely access our banking APIs with your unique API key.
+            Authenticate requests, manage transactions programmatically, and
+            keep your key private.{" "}
+            <a className="underline font-semibold text-indigo-600" href="">
+              API Documentation
+            </a>
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 transition">
+            Regenerate Token
+          </button>
+          <div className="flex border border-gray-300 rounded-lg overflow-hidden">
+            <input
+              className="py-2 px-3 outline-none text-sm"
+              placeholder="XXXXXXXXXX"
+              type="text"
+            />
+            <div className="flex items-center justify-center bg-gray-100 px-2 cursor-pointer hover:bg-gray-200 transition">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M10 8V7C10 6.057 10 5.586 10.293 5.293C10.586 5 11.057 5 12 5H17C17.943 5 18.414 5 18.707 5.293C19 5.586 19 6.057 19 7V12C19 12.943 19 13.414 18.707 13.707C18.414 14 17.943 14 17 14H16M7 19H12C12.943 19 13.414 19 13.707 18.707C14 18.414 14 17.943 14 17V12C14 11.057 14 10.586 13.707 10.293C13.414 10 12.943 10 12 10H7C6.057 10 5.586 10 5.293 10.293C5 10.586 5 11.057 5 12V17C5 17.943 5 18.414 5.293 18.707C5.586 19 6.057 19 7 19Z"
+                  stroke="#464455"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
+          </div>
+        </div>
+      </div>
 
-        </>
-    )
-}
+      <div className="border border-gray-200 rounded-2xl bg-white shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+        <h2 className="text-lg font-bold text-gray-900 mb-2">Webhooks</h2>
+        <p className="text-sm text-gray-700">
+          Receive real-time callbacks for every transaction to automate your
+          workflows.{" "}
+          <a className="underline font-semibold text-indigo-600" href="">
+            Learn more
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+};
 
-export default Developertools
+export default Developertools;
