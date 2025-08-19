@@ -82,8 +82,8 @@ const Dashbord = () => {
     <>
       <div className="w-full h-screen  bg-sky-100 flex flex-col gap-[20px] items-center sm:overflow-y-hidden overflow-y-auto overflow-x-hidden ">
         <Navbar></Navbar>
-        <div className="w-full flex-col  h-screen pb-[100px] sm:flex-row flex">
-          <div className="flex flex-row h-full  sm:w-[4%] sm:px-0 px-[10px] sm:flex-col sm:justify-normal justify-center items-center gap-[10px]  sm:gap-[20px] w-full">
+        <div className="w-full flex-col  h-screen pb-0 sm:pb-[100px] sm:flex-row flex">
+          <div className="flex flex-row h-full  sm:w-[4%] sm:px-0 px-[30px] sm:flex-col sm:justify-normal justify-center items-center gap-[5px]  mb-2 sm:gap-[20px] w-full">
             {items.map(({ to, icon, label, show, setShow }) => (
               <NavLink
                 key={to}
@@ -111,7 +111,7 @@ const Dashbord = () => {
             ))}
           </div>
 
-          <div className="ml-0 sm:ml-1 w-full sm:w-[94%]  h-full rounded-2xl border-gray-300 border-[1px] bg-white">
+          <div className="ml-0 sm:ml-1 w-full sm:w-[94%] h-full rounded-2xl border-gray-300 border-[1px] bg-white">
             <header className="w-full sm:h-[54px] h-[90px] border-b-[1px] border-gray-300">
               <div
                 style={{ fontFamily: "Montserrat" }}
