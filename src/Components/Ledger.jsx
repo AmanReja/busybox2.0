@@ -3,11 +3,13 @@ import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
 import { useSelector, useDispatch } from "react-redux";
 import { getall_ledgerwallet_data } from "../redux/action";
+import "../App.css"
 
 const Ledger = () => {
   const [searchdate, setSearchdate] = useState("");
   const [searchtr, setSearchtr] = useState("");
   const [trstatus, setTrstatus] = useState("");
+  const [load, setLoad] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -21,7 +23,10 @@ const Ledger = () => {
   console.log(55, trdata);
 
   useEffect(() => {
+
+    setLoad(true)
     dispatch(getall_ledgerwallet_data(searchtr, trstatus));
+    setLoad(false)
   }, [dispatch, searchtr, trstatus]);
 
   const date = new Date();
@@ -110,8 +115,9 @@ const Ledger = () => {
                 </button>
               </div>
             </div>
+               
 
-            <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-md overflow-hidden">
+{!load?    <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-md overflow-hidden">
               <thead className="text-[11px] text-gray-500 uppercase bg-[#f9f9f9] border-b border-gray-300">
                 <tr>
                   <th className="px-4 py-3">#Txn Details</th>
@@ -174,6 +180,8 @@ const Ledger = () => {
                   <th className="px-4 py-3">Status</th>
                 </tr>
               </thead>
+
+              
 
               <tbody className="text-[13px] font-medium">
                 {trdata?.map((txn, i) => (
@@ -238,7 +246,12 @@ const Ledger = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table>:<div className="w-full justify-center flex items-center">
+              
+            <div className="loader"></div>
+              </div>}
+
+        
 
             <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-white text-sm text-gray-600">
               <div>

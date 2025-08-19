@@ -9,11 +9,18 @@ const Payout = () => {
   const dispatch = useDispatch();
   const payoutdata = useSelector((state) => state.payoutlog.payoutlog.data);
   console.log(payoutdata, 55);
+  const [searchtr, setSearchtr] = useState("");
+  const [trstatus, setTrstatus] = useState("");
 
 
 
   useEffect(() => {
-    dispatch(getall_payoutlog_data());
+    async function fetchdata() {
+   
+
+   await dispatch(getall_payoutlog_data());
+  
+    }fetchdata();
   }, [dispatch]);
 
   return (

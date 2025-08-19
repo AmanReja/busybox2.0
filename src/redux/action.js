@@ -30,10 +30,17 @@ export const getall_ledgerwallet_data =
     dispatch({ type: "GETALL_LEDGER_WALLET", payload: data });
   };
 
-export const getall_payoutlog_data = () => async (dispatch) => {
+export const getall_payoutlog_data = (searchtr,trstatus,searchdate_start,searchdate_end) => async (dispatch) => {
   const token = localStorage.getItem("token") || {};
+
+  const params = new URLSearchParams();
+  if (searchtr) params.append("search", searchtr);
+  if (trstatus) params.append("status", trstatus);
+  if (searchdate_start) params.append("start_date", searchdate_start);
+  if (searchdate_end) params.append("end_date", searchdate_end);
+
   const res = await fetch(
-    `${baseUrl}/v1/user/payouts-logs`,
+    `${baseUrl}/v1/user/payouts-logs?${params.toString()}`,
     {
       method: "GET",
       headers: {

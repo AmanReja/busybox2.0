@@ -128,12 +128,12 @@ const Dashbord = () => {
                   </a>
                   <div className="absolute top-[30px] left-0 w-[200px] bg-white shadow-lg rounded-lg p-4 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <div className="flex flex-col gap-2 text-gray-700 text-sm">
-                      <a
-                        href="#"
+                      <NavLink
+                        to={"/dashboard/payout"}
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"
                       >
                         Single payout
-                      </a>
+                      </NavLink>
                       <NavLink
                         to={"/dashboard/bulkpayout"}
                         className="hover:bg-gray-100 px-3 py-2 rounded-md transition"

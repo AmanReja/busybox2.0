@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
 import { useSelector, useDispatch } from "react-redux";
 import { getall_payoutlog_data } from "../redux/action";
+import "../App.css"
 
 const Report = () => {
+  const [load,setLoad] = useState(false);
+  const [searchtr, setSearchtr] = useState("");
+  const [trstatus, setTrstatus] = useState("");
+
 
 
   const dispatch = useDispatch();
@@ -14,12 +19,18 @@ const Report = () => {
 
 
   useEffect(() => {
-    dispatch(getall_payoutlog_data());
-  }, [dispatch]);
+
+   async function fetchdata() {
+      setLoad(true)
+
+   await dispatch(getall_payoutlog_data(searchtr,trstatus));
+    setLoad(false)
+    }fetchdata()
+    
+  }, [dispatch,searchtr,trstatus]);
 
 
-  console.log(payoutdata, 15);
-
+ 
   console.log(Array.isArray(payoutdata));
 
   const fiterpayoutpending = payoutdata?.filter((payout,index)=>payout?.status=="PENDING")
@@ -27,25 +38,25 @@ const Report = () => {
   console.log(fiterpayoutpending);
   const fiterpayoutfailed = payoutdata?.filter((payout,index)=>payout?.status=="FAILED")
 
-  console.log(33,fiterpayoutfailed);
+
   
 
   const failed = fiterpayoutfailed?.reduce((acc, item) => {
 
 
     const amount = parseFloat(item?.settlement_amount || 0);
-    console.log(`Adding: ${amount}`);
+    
     return acc + amount;
   }, 0);
-  console.log(failed);
+
 
 
 const pendingpayouts = fiterpayoutpending?.reduce((acc, item) => {
   const amount = parseFloat(item?.settlement_amount || 0);
-  console.log(`Adding: ${amount}`);
+  
   return acc + amount;
 }, 0);
-console.log(pendingpayouts);
+
 
 
 
@@ -114,10 +125,10 @@ console.log(Successrate);
 
   <div className="flex flex-col sm:flex-row gap-5 bg-white  rounded-xl p-5">
     {[
-      { label: 'Payout Value', value: payouts },
-      { label: 'Success Rate', value: `${Successrate}%` },
-      { label: 'Pending Payouts', value: pendingpayouts },
-      { label: 'Failure', value: failed},
+      { label: 'Payout Value', value: payouts ||"00" },
+      { label: 'Success Rate', value: Successrate +"%"|| "00"},
+      { label: 'Pending Payouts', value: pendingpayouts||"00" },
+      { label: 'Failure', value: failed||"00"},
     ].map((item, index) => (
       <div
         key={index}
@@ -131,7 +142,10 @@ console.log(Successrate);
 </section>
 
 
-<div className="w-full px-[20px] mt-[20px]">
+
+
+
+ <div className="w-full px-[20px] mt-[20px]">
           <div className="flex w-[100%] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
            
           <div className="flex justify-between items-center p-4 w-full flex-wrap gap-4 bg-white shadow-sm rounded-md">
@@ -164,7 +178,7 @@ console.log(Successrate);
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
       <i class="fa-solid fa-magnifying-glass"></i>
       </span>
-      <input
+      <input onChange={(e)=>{setSearchtr(e.target.value)}}
         type="text"
         placeholder="Search transaction"
         className="pl-8 pr-2 outline-none text-sm text-gray-700 bg-transparent"
@@ -173,11 +187,13 @@ console.log(Successrate);
 
     {/* Select dropdown */}
     <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white">
-      <select className="text-sm text-gray-700 bg-transparent outline-none">
-        <option value="All Transactions">All Transactions</option>
-        <option value="Success">Success</option>
-        <option value="Pending">Pending</option>
-        <option value="Failed" selected>Failed</option>
+      <select onChange={(e)=>{
+        setTrstatus(e.target.value)
+      }} className="text-sm text-gray-700 bg-transparent outline-none">
+        <option selected value="All">All Transactions</option>
+        <option value="SUCCESS">Success</option>
+        <option value="PENDING">Pending</option>
+        <option value="FAILED" >Failed</option>
       </select>
     </div>
 
@@ -188,8 +204,9 @@ console.log(Successrate);
   </div>
 </div>
 
-           
-            <table className="w-full text-sm text-left text-gray-600">
+
+
+       {!load? <table className="w-full text-sm text-left text-gray-600">
             <thead className="text-[11px] text-gray-400 uppercase border-b bg-gray-50 border-gray-300 border-t">
                 <tr>
                   <th className="px-4 py-3">#Status</th>
@@ -295,7 +312,12 @@ console.log(Successrate);
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table>:<div className="flex w-full h-[200px] justify-center items-center">
+              
+              <div className="loader"></div>
+              </div>} 
+           
+           
           </div>
         </div>
 
