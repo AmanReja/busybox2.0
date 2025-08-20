@@ -24,7 +24,7 @@ const Payout = () => {
   }, [dispatch]);
 
   return (
-    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%]  flex flex-col">
+    <div className=" w-[100%] rounded-2xl 2xl:h-[85%] xl:h-[80%] h-[78%] flex flex-col">
       <main className="w-full h-full  flex flex-col overflow-y-scroll">
         <section className="w-full flex flex-col sm:flex-row  gap-[20px] mt-[20px] sm:min-h-[600px] 2xl:h-[780px]  sm:h-[600px] px-[2px] sm:px-[20px]">
           <form className="sm:w-[30%] border-gray-200 border w-full  flex flex-col gap-4 rounded-xl bg-white">
