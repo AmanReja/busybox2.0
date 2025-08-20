@@ -7,6 +7,9 @@ import bg3 from "../assets/images/bg-3.png";
 import Subfooter from "./Subfooter";
 import { useSelector, useDispatch } from "react-redux";
 import { getall_payoutlog_data,getall_wallet_company_data } from "../redux/action";
+import {BadgeCheck,ArrowDownLeft,ArrowUpRight,CreditCard} from "lucide-react"
+
+
 
 const Summery = () => {
 
@@ -54,25 +57,25 @@ const Summery = () => {
 
   const icons = [
     {
-      icon: "fa-solid fa-arrow-right",
+      icon: <ArrowUpRight size={44}  className="text-gray-600"/>,
       num: totallpayouts,
       text: "Payouts",
       deg: "-50deg",
     },
     {
-      icon: "fa-solid fa-arrow-right",
+      icon: <ArrowDownLeft size={44}  className="text-gray-600"/>,
       num: 0,
       text: "Collection",
       deg: "130deg",
     },
     {
-      icon: "fa-regular fa-credit-card",
+      icon: <CreditCard size={44} className="text-gray-600" />,
       num: 0,
       text: "Cards Created",
       deg: "0deg",
     },
     {
-      icon: "fa-solid fa-circle-check",
+      icon: <BadgeCheck size={44} className="text-gray-600"/>,
       num: 0,
       text: "Identity Verified",
       deg: "0deg",
@@ -142,10 +145,8 @@ const Summery = () => {
                     className="flex bg-no-repeat bg-left-top bg-contain flex-col  items-center justify-between  rounded-xl p-4   shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     <div className="w-full  flex justify-center items-center h-[40%]">
-                      <i
-                        style={{ transform: `rotate(${deg})` }}
-                        className={`${icon} text-3xl text-gray-600 `}
-                      ></i>
+                      
+                     {icon}
                     </div>
                     <div className="w-full text-center h-[60%]">
                       <h1 className="text-4xl font-semibold text-gray-800">

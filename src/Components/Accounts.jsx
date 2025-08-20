@@ -66,10 +66,10 @@ const Accounts = () => {
     {
       name: user.role,
       catagory: "Role",
-      color: "#A3E635",
+      color: "bg-gradient-to-r from-lime-400 to-green-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6  text-white"
           fill="#fff"
           height="200px"
           width="200px"
@@ -88,18 +88,16 @@ const Accounts = () => {
             stroke-linejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
-            {" "}
             <g id="XMLID_26_">
-              {" "}
               <polygon
                 id="XMLID_462_"
                 points="290,0 170,0 188.182,100 271.818,100 "
-              ></polygon>{" "}
+              ></polygon>
               <polygon
                 id="XMLID_463_"
                 points="160,390 230,460 300,390 271.111,130 188.889,130 "
-              ></polygon>{" "}
-            </g>{" "}
+              ></polygon>
+            </g>
           </g>
         </svg>
       ),
@@ -107,10 +105,10 @@ const Accounts = () => {
     {
       name: "8617828286",
       catagory: "Mobile Number",
-      color: "#EF4444",
+      color: "bg-gradient-to-r from-red-400 to-pink-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6  text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -124,10 +122,10 @@ const Accounts = () => {
     {
       name: user.email,
       catagory: "Email ID",
-      color: "#8B5CF6",
+      color: "bg-gradient-to-r from-purple-500 to-indigo-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6  text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -141,10 +139,10 @@ const Accounts = () => {
     {
       name: "XXXXXXXX3710",
       catagory: "Adhaar",
-      color: "#2563EB",
+      color: "bg-gradient-to-r from-blue-500 to-cyan-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6  text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -162,10 +160,10 @@ const Accounts = () => {
     {
       name: "XXXXXXXX449R",
       catagory: "Pan Number",
-      color: "#F59E0B",
+      color: "bg-gradient-to-r from-yellow-400 to-orange-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6 text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -186,6 +184,8 @@ const Accounts = () => {
       ),
     },
   ];
+  
+  
 
   const content_business = [
     {
@@ -325,8 +325,8 @@ const Accounts = () => {
             {content_card.map((item) => (
               <div className="flex gap-[10px]  justify-center items-center">
                 <div
-                  style={{ backgroundColor: `${item.color}` }}
-                  className={` shadow-md w-[40px] p-2 rounded-full`}
+                  // style={{ backgroun: `${item.color}` }}
+                  className={` shadow-md w-[40px] p-2 ${item.color} rounded-full`}
                 >
                   {item.icon}
                 </div>
