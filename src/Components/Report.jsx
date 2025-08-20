@@ -1,20 +1,72 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState ,useRef} from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
 import { useSelector, useDispatch } from "react-redux";
-import { getall_payoutlog_data } from "../redux/action";
+import { getall_payoutlog_data,Payout_report } from "../redux/action";
 import "../App.css"
+import "flatpickr/dist/themes/airbnb.css"; 
+import flatpickr from "flatpickr"
 
 const Report = () => {
   const [load,setLoad] = useState(false);
   const [searchtr, setSearchtr] = useState("");
   const [trstatus, setTrstatus] = useState("");
+  const [formdatastr,setFormdatastr]=useState("")
+  const [formdataend,setFormdataend]=useState("")
+
+
+ 
+  const[date,setDate] =useState({startDate:null,endDate:null})
+
+
+  const formatDate = (date) => new Intl.DateTimeFormat("en-CA").format(date);
+
+
+  useEffect(() => {
+    if (date.startDate && date.endDate) {
+      setFormdatastr(formatDate(date.startDate));
+      setFormdataend(formatDate(date.endDate));
+    }
+  }, [date]);
+
+
+
+
+
+  
+  const dateRangeRef = useRef(null);
+
+  useEffect(() => {
+    flatpickr(dateRangeRef.current, {
+      mode: "range",
+      dateFormat: "d-m-y", 
+      defaultDate: ["15-07-2025", "16-07-2025"],
+      value:date,
+      onChange: function (selectedDates) {
+        if (selectedDates.length === 2) {
+          const [start, end] = selectedDates;
+          setDate({ startDate: start, endDate: end });
+        }
+      }
+    });
+  }, []);
+
 
 
 
   const dispatch = useDispatch();
   const payoutdata = useSelector((state) => state.payoutlog.payoutlog.data);
+  const payoutreportdata = useSelector((state) => state.payoutreport.payoutreport);
   
+console.log(22,payoutreportdata);
+
+
+
+  const handeldownload = () => {
+    dispatch(getall_payoutlog_data(searchtr, trstatus, formdatastr, formdataend, true));
+  };
+  
+
 
 
 
@@ -23,86 +75,16 @@ const Report = () => {
    async function fetchdata() {
       setLoad(true)
 
-   await dispatch(getall_payoutlog_data(searchtr,trstatus));
+   await dispatch(getall_payoutlog_data(searchtr,trstatus,formdatastr,formdataend));
+   await dispatch(Payout_report())
     setLoad(false)
     }fetchdata()
     
-  }, [dispatch,searchtr,trstatus]);
+  }, [dispatch,searchtr,trstatus,formdatastr,formdataend]);
 
 
  
-  console.log(Array.isArray(payoutdata));
-
-  const fiterpayoutpending = payoutdata?.filter((payout,index)=>payout?.status=="PENDING")
-
-  console.log(fiterpayoutpending);
-  const fiterpayoutfailed = payoutdata?.filter((payout,index)=>payout?.status=="FAILED")
-
-
-  
-
-  const failed = fiterpayoutfailed?.reduce((acc, item) => {
-
-
-    const amount = parseFloat(item?.settlement_amount || 0);
-    
-    return acc + amount;
-  }, 0);
-
-
-
-const pendingpayouts = fiterpayoutpending?.reduce((acc, item) => {
-  const amount = parseFloat(item?.settlement_amount || 0);
-  
-  return acc + amount;
-}, 0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-const payouts = payoutdata?.reduce((acc, item) => {
-  const amount = parseFloat(item?.settlement_amount || 0);
-  console.log(`Adding: ${amount}`);
-  return acc + amount;
-}, 0);
-console.log(payouts);
-
-
-
-const statusCounts = payoutdata?.reduce((acc, item) => {
-  acc[item.status] = (acc[item.status] || 0) + 1;
-  return acc;
-}, {});
-
-
-
-
-console.log(56,statusCounts);
-
-const totalstatus = (statusCounts?.SUCCESS+statusCounts?.FAILED+statusCounts?.PENDING);
-const Successrate = (statusCounts?.SUCCESS / totalstatus) * 100
-
-
-console.log(Successrate);
-  
-
-
-
-
-
-
-
-
-  
+   
   return (
     <div className=" w-[100%] rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
       <main className="w-full h-full flex flex-col overflow-y-scroll">
@@ -125,10 +107,13 @@ console.log(Successrate);
 
   <div className="flex flex-col sm:flex-row gap-5 bg-white  rounded-xl p-5">
     {[
-      { label: 'Payout Value', value: payouts ||"00" },
-      { label: 'Success Rate', value: Successrate +"%"|| "00"},
-      { label: 'Pending Payouts', value: pendingpayouts||"00" },
-      { label: 'Failure', value: failed||"00"},
+      { label: 'Payout Value', value: payoutreportdata.
+      total_payout_value
+      
+      ||"00" },
+      { label: 'Success Rate', value: `${payoutreportdata.success_rate==undefined?"00":payoutreportdata.success_rate+"%"}` || "00"},
+      { label: 'Pending Payouts', value: payoutreportdata.pending_value ||"00" },
+      { label: 'Failure', value: payoutreportdata.failed_value ||"00"},
     ].map((item, index) => (
       <div
         key={index}
@@ -157,20 +142,10 @@ console.log(Successrate);
   {/* Controls */}
   <div className="flex gap-3 flex-wrap items-center">
     {/* Date Picker */}
-    <div className="border border-gray-300 px-4 py-1 rounded-lg bg-white flex items-center justify-center ">
-    <i class="fa-regular text-gray-400 fa-calendar-days"></i>
-  <input
-    type="date"
-    className="outline-none text-sm  w-[90px] text-gray-700 bg-transparent hide-date-icon"
-    value="2025-07-27"
-  />
-  <span className="text-gray-500">-</span>
-  <input
-    type="date"
-    value="2025-08-27"
-    className="outline-none text-sm w-[90px] text-gray-700 bg-transparent hide-date-icon"
-  />
-</div>
+    <div className="border-gray-300 pl-[5px] border-[1px] p-1 rounded flex justify-center items-center gap-2" >
+    <i class="fa-solid fa-calendar-days text-gray-300"></i>
+    <input className="w-[180px] text-[14px]  content-center justify-center text-gray-400 outline-none  rounded" type="text" ref={dateRangeRef} />
+    </div>
 
 
     {/* Search with icon */}
@@ -198,7 +173,7 @@ console.log(Successrate);
     </div>
 
     {/* Download button */}
-    <button className="text-sm font-medium text-gray-700  hover:shadow-xl border-gray-300 border-1  px-4 py-1 rounded-lg transition">
+    <button onClick={handeldownload} className="text-sm font-medium text-gray-700  hover:shadow-xl border-gray-300 border-1  px-4 py-1 rounded-lg transition">
       <span><i class="fa-solid fa-download text-gray-400"></i></span>Download
     </button>
   </div>

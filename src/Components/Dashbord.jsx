@@ -101,7 +101,7 @@ const Dashbord = () => {
                   className={`fa-solid ${icon} sm:text-[18px] text-[12px] text-gray-500`}
                 ></i>
                 <div
-                  className={`absolute sm:block hidden left-[120%] top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded shadow-md transition duration-200 whitespace-nowrap ${
+                  className={`absolute sm:block hidden left-[120%] top-1/2 -translate-y-1/2 bg-black text-white text-xs z-40 px-2 py-1 rounded shadow-md transition duration-200 whitespace-nowrap ${
                     show ? "visible" : "invisible"
                   }`}
                 >

@@ -4,7 +4,8 @@ import {
   GETALL_LEDGER_WALLET,
   GETALL_PAYOUTLOG_DATA,
   GETALL_BULKPAY_DATA,
-  GETALL_WALLET_COMPANY_DATA
+  GETALL_WALLET_COMPANY_DATA,
+  PAYOUT_REPORT
 } from "./action";
 
 const initialLedgerWalletState = {
@@ -63,6 +64,20 @@ export const walletcompanyReducer = (state = initialwalletcompanystate, action) 
     return {
       ...state,
       walletcompany: action.payload,
+    };
+  } else {
+    return state;
+  }
+};
+const initialpayoutreport = {
+  payoutreport: [],
+};
+
+export const payoutreportReducer = (state = initialpayoutreport, action) => {
+  if (action.type === PAYOUT_REPORT) {
+    return {
+      ...state,
+      payoutreport: action.payload,
     };
   } else {
     return state;

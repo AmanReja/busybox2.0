@@ -191,10 +191,10 @@ const Accounts = () => {
     {
       name: user.company_id,
       catagory: "Business Name",
-      color: "#60A5FA",
+      color: "bg-gradient-to-r from-lime-400 to-green-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6 text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -212,10 +212,10 @@ const Accounts = () => {
     {
       name: "XXXXXX838J",
       catagory: "Business Pan",
-      color: "#EF4444",
+      color: "bg-gradient-to-r from-red-400 to-pink-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6 text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -238,10 +238,10 @@ const Accounts = () => {
     {
       name: "19AAICB9838J1ZZ",
       catagory: "GST",
-      color: "#8B5CF6",
+      color: "bg-gradient-to-r from-purple-500 to-indigo-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6 text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -259,10 +259,10 @@ const Accounts = () => {
     {
       name: "bb1122334456",
       catagory: "Organisation ID",
-      color: "#F59E0B",
+      color: "bg-gradient-to-r from-yellow-400 to-orange-500",
       icon: (
         <svg
-          className="w-6 h-6 text-gray-800 dark:text-white"
+          className="w-6 h-6 text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -282,13 +282,13 @@ const Accounts = () => {
   return (
     <>
       <div className="w-full flex flex-col gap-[50px] mb-[10px] bg-white  overflow-hidden">
-        <div className="flex flex-col border-gray-200 border h-auto sm:h-[300px]  w-full shadow rounded-xl">
+        <div className="flex flex-col border-gray-200 border h-auto    w-full shadow rounded-xl">
           <div className="flex  w-full bg-gradient-to-r from-[#a16bf8] via-[#3644c2] h-[50%] to-[#8d90d8] rounded-t-xl p-6 shadow-md items-center justify-between">
             <div className="flex flex-col h-[90px] justify-center gap-2 text-white">
               <div className="flex  items-center gap-[10px]">
                 <div className="bg-[#6a26e7] shadow-md w-[40px] p-2 rounded-full">
                   <svg
-                    class="w-6 h-6 text-gray-800 dark:text-white"
+                    class="w-6 h-6 text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -321,18 +321,18 @@ const Accounts = () => {
             {/* <img className="w-[250px] h-[90px] object-contain opacity-80" src={line} alt="Decoration" /> */}
           </div>
 
-          <div className="w-full sm:h-[50%] h-auto py-[10px] pl-[30px] xl:justify-center sm:justify-center 2xl:justify-normal justify-start flex-col sm:flex-row  flex gap-[50px]">
+          <div className="w-full py-[10px] pl-[30px] sm:justify-normal flex-wrap h-auto  mt-[20px] justify-start sm:flex-row flex-col flex gap-[50px] ">
             {content_card.map((item) => (
-              <div className="flex gap-[10px]  justify-center items-center">
+              <div className="flex gap-[10px]  sm:min-w-0 min-w-[280px] sm:justify-center justify-evenly items-center">
                 <div
-                  // style={{ backgroun: `${item.color}` }}
-                  className={` shadow-md w-[40px] p-2 ${item.color} rounded-full`}
+                 
+                  className={` rounded-full p-4 ${item.color}`}
                 >
                   {item.icon}
                 </div>
 
-                <div className="flex flex-col">
-                  <h1 className="font-bold text-[13px] text-gray-900">
+                <div className="flex flex-col  min-w-[200px] ">
+                  <h1 className="font-bold text-[13px] text-gray-700">
                     {item.name}
                   </h1>
                   <p className="text-[12px]">{item.catagory}</p>
@@ -341,11 +341,11 @@ const Accounts = () => {
             ))}
           </div>
         </div>
-        <div className="flex border-gray-200  border w-full rounded-2xl  bg-white shadow-xl h-[200px] flex-col p-4 gap-[10px]">
+        <div className="flex border-gray-200  border w-full rounded-2xl bg-white  h-auto mb-[10px] flex-col p-4 gap-[10px]">
           <div className="flex  items-center gap-[10px]">
             <div className="bg-lime-400 shadow-md w-[40px] p-2 rounded-full">
               <svg
-                class="w-6 h-6 text-gray-800 dark:text-white"
+                class="w-6 h-6 text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -368,17 +368,17 @@ const Accounts = () => {
             </p>
           </div>
 
-          <div className="w-full py-[10px] pl-[30px] flex gap-[50px] ">
+          <div className="w-full py-[10px] pl-[30px] sm:justify-normal justify-start sm:flex-row flex-col flex gap-[50px] ">
             {content_business.map((item) => (
-              <div className="flex gap-[10px]  justify-center items-center">
+              <div className="flex gap-[10px]  sm:min-w-0 min-w-[280px] sm:justify-center justify-evenly items-center">
                 <div
-                  style={{ backgroundColor: `${item.color}` }}
-                  className={` rounded-full p-4`}
+                 
+                  className={` rounded-full p-4 ${item.color}`}
                 >
                   {item.icon}
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col  min-w-[200px] ">
                   <h1 className="font-bold text-[13px] text-gray-700">
                     {item.name}
                   </h1>

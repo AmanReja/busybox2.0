@@ -24,22 +24,12 @@ const Settings = () => {
   //   }, []);
 
   return (
-    <div className=" w-[100%]  rounded-2xl 2xl:h-[85%] h-[80%] flex flex-col">
+    <div className=" w-[100%]  rounded-2xl 2xl:h-[85%] xl:h-[80%] h-[78%] flex flex-col">
       <main className="w-full h-full flex flex-col overflow-y-scroll overflow-x-hidden">
         <section className="w-full flex flex-col sm:flex-col  gap-[20px] mt-[20px] sm:min-h-[600px] 2xl:h-[780px]  sm:h-[600px] px-[2px] sm:px-[20px]">
-          {/* <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-center bg-indigo-100 rounded-full p-2">
-              <img className="h-8 w-8" src={confetti} alt="Confetti" />
-            </div>
-            <div>
-              <h1 className="font-semibold text-gray-800 text-lg"></h1>
-              <p className="text-sm text-gray-500">
-                Make work feel like a breeze
-              </p>
-            </div>
-          </div> */}
+       
           <div className="flex mt-[10px]  w-full h-auto">
-            <div className="relative w-full h-[200px]   bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative w-full h-[200px]   bg-gradient-to-r from-indigo-900 via-indigo-800 to-indigo-700 rounded-lg overflow-hidden shadow-2xl">
               {/* YouTube Logo Section */}
               <div className="absolute left-8 top-1/2 transform -translate-y-1/2 flex items-center gap-4">
                 <div className="bg-white/90 rounded-xl p-3 shadow-lg">
@@ -51,7 +41,7 @@ const Settings = () => {
                   </h1>
                   <p
                     style={{ fontFamily: "Delius" }}
-                    className="text-gray-700 font-light text-xl"
+                    className="text-white font-light text-xl"
                   >
                     {" "}
                     Make work feel like a breeze
@@ -60,50 +50,7 @@ const Settings = () => {
               </div>
 
               {/* Spirit Characters */}
-              <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex gap-4">
-                {/* First Spirit */}
-                <div className="relative">
-                  <div className="w-20 h-24 bg-white rounded-full shadow-lg relative">
-                    {/* Face */}
-                    <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
-                      {/* Eyes */}
-                      <div className="flex gap-2 mb-2">
-                        <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
-                        <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
-                      </div>
-                      {/* Mouth */}
-                      <div className="w-1 h-1 bg-gray-800 rounded-full mx-auto"></div>
-                    </div>
-                    {/* Blush */}
-                    <div className="absolute top-8 left-2 w-2 h-4 bg-pink-300 rounded-full opacity-60"></div>
-                    <div className="absolute top-8 right-2 w-2 h-4 bg-pink-300 rounded-full opacity-60"></div>
-                  </div>
-                  {/* Body/Cloak */}
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-gray-700 rounded-b-full"></div>
-                </div>
-
-                {/* Second Spirit */}
-                <div className="relative">
-                  <div className="w-20 h-24 bg-white rounded-full shadow-lg relative">
-                    {/* Face */}
-                    <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
-                      {/* Eyes */}
-                      <div className="flex gap-2 mb-2">
-                        <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
-                        <div className="w-2 h-2 bg-gray-800 rounded-full"></div>
-                      </div>
-                      {/* Mouth - slightly different expression */}
-                      <div className="w-1 h-2 bg-gray-800 rounded-full mx-auto"></div>
-                    </div>
-                    {/* Blush */}
-                    <div className="absolute top-8 left-2 w-2 h-4 bg-pink-300 rounded-full opacity-60"></div>
-                    <div className="absolute top-8 right-2 w-2 h-4 bg-pink-300 rounded-full opacity-60"></div>
-                  </div>
-                  {/* Body/Cloak */}
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-12 bg-gray-700 rounded-b-full"></div>
-                </div>
-              </div>
-
+            
               {/* Subtle overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
             </div>

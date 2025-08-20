@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "./Chart";
 import Hdfc from "../assets/images/HDFC.png";
-import { Outlet } from "react-router-dom";
+import { Outlet ,Link} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getall_payoutlog_data } from "../redux/action";
 
@@ -95,9 +95,9 @@ const Payout = () => {
                 Last 10 Transactions
               </h2>
               <div className="border-gray-300 border-[1px] p-1 px-[20px] rounded-[8px] hover:shadow-gray-300 hover:shadow-xl duration-300 ">
-                <button className="text-[12px]  font-medium text-gray-500 ">
+                <Link  to={"/dashboard/report"} className="text-[12px]  font-medium text-gray-500 ">
                   See More Transaction
-                </button>
+                </Link>
               </div>
             </div>
 

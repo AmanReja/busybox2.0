@@ -57,38 +57,19 @@ const Signin = () => {
       setPass("");
     }
 
-    // const admin = {
-    //   email: "Aman@busybox.in",
-    //   pass: "busy@123",
-    // };
-    // if (email == admin.email && pass == admin.pass) {
-    //   navigate("/dashboard/summery?login=success");
-    // } else {
-    //   toast.error("🦄 wrong pass and email", {
-    //     position: "top-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: false,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //     transition: Slide,
-    //   });
-    // }
   };
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className="min-h-screen  flex items-center justify-center p-6">
-        <div className="max-w-6xl  w-full bg-white backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden border border-white/40">
+      <div className="min-h-screen  flex items-center justify-center sm:p-6 p-0">
+        <div className="max-w-6xl  w-full bg-white backdrop-blur-lg  rounded-3xl shadow-2xl overflow-hidden border border-white/40">
           <div className="grid lg:grid-cols-2">
             {/* Left Side - Form */}
             <form
               onSubmit={(e) => {
                 login(), e.preventDefault();
               }}
-              className="p-10 lg:p-14 flex flex-col overflow-hidden justify-center"
+              className="p-10 lg:p-14 flex flex-col  overflow-hidden justify-center"
             >
               <div className="max-w-md mx-auto w-full space-y-4">
                 {/* Logo */}
