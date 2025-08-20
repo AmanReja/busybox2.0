@@ -89,7 +89,7 @@ const Payout = () => {
             </div>
           </form>
 
-          <div className="flex w-[68%] h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
+          <div className="flex sm:w-[68%] w-full h-full flex-col border-gray-100 border-[1px] bg-white rounded-xl   overflow-y-auto">
             <div className="text flex justify-between items-center p-4  h-[60px] w-full">
               <h2 className="text-[16px]  font-semibold text-gray-800 ">
                 Last 10 Transactions
