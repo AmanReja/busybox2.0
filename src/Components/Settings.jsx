@@ -12,16 +12,7 @@ import bank from "../assets/icons/bank.png";
 import user from "../assets/icons/user.png";
 
 const Settings = () => {
-  // const user = JSON.parse(localStorage.getItem("user")) || {};
-  //   const getalldata = async () => {
-  //     const res = await fetch(`https://api.busybox.in/payment/payment`);
-  //     const data = await res.json();
-  //     console.log(12, data);
-  //   };
-
-  //   useEffect(() => {
-  //     getalldata();
-  //   }, []);
+  
 
   return (
     <div className=" w-[100%]  rounded-2xl 2xl:h-[85%] xl:h-[80%] h-[78%] flex flex-col">
@@ -36,7 +27,7 @@ const Settings = () => {
                   <img className="h-8 w-8" src={confetti} alt="Confetti" />
                 </div>
                 <div className="flex flex-col">
-                  <h1 className="text-white text-4xl font-bold tracking-wide">
+                  <h1 className="text-white sm:text-4xl text-3xl font-bold tracking-wide">
                     Productive day it is!
                   </h1>
                   <p
@@ -56,12 +47,12 @@ const Settings = () => {
             </div>
           </div>
 
-          <header className="w-full h-[50px]">
+          <header className="w-full h-[50px] sm:overflow-visible overflow-x-auto">
             <div className="flex h-[50px] items-center text-[15px] w-[600px] gap-[20px] text-gray-800">
               <NavLink
                 to={"/dashboard/settings/accounts"}
                 className={({ isActive }) =>
-                  `flex items-center gap-1 hover:border-b-violet-300 hover:border-b-[3px] ${
+                  `flex items-center gap-1 hover:border-b-violet-300 hover:border-b-[3px]${
                     isActive
                       ? "border-b-violet-400 font-bold border-b-[3px]"
                       : ""
