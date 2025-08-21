@@ -30,6 +30,7 @@ import Settings from "./Components/Settings";
 import Accounts from "./Components/Accounts";
 import Developertools from "./Components/Developertools";
 import Protectedroute from "./Components/Protectedroute.jsx";
+import Profile from "./Components/Profile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
         <Route path="/dashboard" element={<Dashbord />}>
           <Route index path="summery" element={<Summery />} />
           <Route path="addmoney" element={<Addmoney />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="ledger" element={<Ledger />} />
           <Route path="singleenath" element={<Singleenath />} />
           <Route path="bulkpayout" element={<Bulkpayout />} />

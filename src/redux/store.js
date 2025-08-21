@@ -5,7 +5,9 @@ import {
   ledgerwalletReducer,
   bulkpayoutReducer,
   walletcompanyReducer,
-  payoutreportReducer
+  payoutreportReducer,
+  getoneuserReducer,
+  entitycallbackReducer
 } from "./reducer";
 const store = configureStore({
   reducer: {
@@ -13,7 +15,9 @@ const store = configureStore({
     payoutlog: payoutlogReducer,
     bulkpayout: bulkpayoutReducer,
     walletcompany:walletcompanyReducer,
-    payoutreport:payoutreportReducer
+    payoutreport:payoutreportReducer,
+    getoneuser:getoneuserReducer,
+    entitycallback:entitycallbackReducer
 
   },
 });

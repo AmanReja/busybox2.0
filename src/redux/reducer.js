@@ -5,8 +5,40 @@ import {
   GETALL_PAYOUTLOG_DATA,
   GETALL_BULKPAY_DATA,
   GETALL_WALLET_COMPANY_DATA,
-  PAYOUT_REPORT
+  PAYOUT_REPORT,
+  GETONE_USER,
+  GETENTITY_CALLBACK,
+  ADDENTITY_CALLBACK,
+  DELETEENTITY_CALLBACK,
+  UPDATEENTITY_CALLBACK
 } from "./action";
+
+
+
+
+
+const getoneuserState ={
+ getoneuser:[],
+
+}
+
+export const getoneuserReducer =(state=getoneuserState,action)=>{
+
+
+  if (action.type===GETONE_USER) {
+    return{
+      ...state,
+      getoneuser:action.payload,
+    }
+    
+  } else{
+    return state;
+  }
+
+};
+
+
+
 
 const initialLedgerWalletState = {
   ledgerwallet: [],
@@ -83,3 +115,47 @@ export const payoutreportReducer = (state = initialpayoutreport, action) => {
     return state;
   }
 };
+
+
+const initialentitycallbackevent = {
+  entitycallback: [],
+};
+
+export const entitycallbackReducer = (state = initialentitycallbackevent, action) => {
+  if (action.type === GETENTITY_CALLBACK) {
+    return {
+      ...state,
+      entitycallback: action.payload,
+    };
+  } else if(action.type===ADDENTITY_CALLBACK){
+    
+    return{
+      ...state,
+      entitycallback:[action.payload,...state.entitycallback]
+    }
+
+  }
+   else if(action.type===DELETEENTITY_CALLBACK){
+    
+    return{
+      ...state,
+      entitycallback:state.entitycallback.filter((entity) => entity.id !== action.payload)
+    }
+
+  }
+   else if(action.type===UPDATEENTITY_CALLBACK){
+    
+    return{
+      ...state,
+      entitycallback:state.entitycallback.map((entity) => entity.id === action.payload.id?{...entity,...action.payload}:entity)
+    }
+
+  }
+  
+  
+  
+  else {
+    return state;
+  }
+};
+

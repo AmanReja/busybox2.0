@@ -39,7 +39,7 @@ const Report = () => {
   useEffect(() => {
     flatpickr(dateRangeRef.current, {
       mode: "range",
-      dateFormat: "d-m-y", 
+      dateFormat: "y-m-d", 
       defaultDate: ["15-07-2025", "16-07-2025"],
       value:date,
       onChange: function (selectedDates) {

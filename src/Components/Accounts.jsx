@@ -29,7 +29,7 @@ const Accounts = () => {
   const getone_user = async() => {
     const token = localStorage.getItem("token") || {};
     const res = await fetch(
-      `http://192.168.1.35:3000/v1/user/get-details`,
+      `http://192.168.1.34:3000/v1/user/get-details`,
       {
         method: "GET",
         headers: {

@@ -8,7 +8,7 @@ const Protectedroute = () => {
     const token = localStorage.getItem("token");
     console.log(token, 22);
 
-    const res = await fetch("http://192.168.1.35:3000/v1/user/check-auth", {
+    const res = await fetch("http://192.168.1.34:3000/v1/user/check-auth", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

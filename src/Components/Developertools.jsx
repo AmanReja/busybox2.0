@@ -1,8 +1,76 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import hand from "../assets/images/hand.png";
 import Subfooter from "./Subfooter";
+import { X } from "lucide-react"
+import { getentitycallbackevent, addentitycallbackevent, deleteentitycallbackevent } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 const Developertools = () => {
+
+  const dispatch = useDispatch()
+
+
+  const entitycallbackdata = useSelector((state) => state.entitycallback.entitycallback)
+  console.log(10, entitycallbackdata);
+ 
+
+  useEffect(() => {
+    dispatch(getentitycallbackevent())
+
+  }, [dispatch])
+
+
+  const [callbackeventname, setCallbackeventname] = useState("");
+  const [callbackurl, setCallbackurl] = useState("")
+  const [updatedcallevname, setUpdatedcallevname] = useState("")
+  const [updatedcallevurl, setUpdatedcallevurl] = useState("")
+
+
+  const [status, setStatus] = useState("")
+  const [open, setOpen] = useState(false)
+
+
+  const handelentityopen = () => {
+
+    setOpen((prev) => !prev)
+}
+
+
+  // const handelentitydelete = (entity) => {
+  //   dispatch(deleteentitycallbackevent(entity.corp_id,entity.callback_event_name))
+  // }
+
+
+
+
+  // const handelentityupadte = (entity) => {
+  //   setUpdatedcallevname(entity.callback_event_name)
+  //   setUpdatedcallevurl(entity.callback_url)
+
+
+  // }
+
+  console.log(updatedcallevname, updatedcallevurl);
+
+
+
+
+
+  const addentity = () => {
+
+    const newEntity = {
+      callback_event_name: callbackeventname,
+      callback_url: callbackurl,
+      status: status
+    }
+
+    dispatch(addentitycallbackevent(newEntity))
+ }
+
+
+
+
+
   return (
     <div className="w-full h-auto font-[Montserrat] space-y-6">
       {/* Header Card */}
@@ -77,16 +145,178 @@ const Developertools = () => {
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-2xl bg-white shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-        <h2 className="text-lg font-bold text-gray-900 mb-2">Webhooks</h2>
-        <p className="text-sm text-gray-700">
-          Receive real-time callbacks for every transaction to automate your
-          workflows.{" "}
-          <a className="underline font-semibold text-indigo-600" href="">
-            Learn more
-          </a>
-        </p>
+      <form onSubmit={(e) => { addentity(e), e.preventDefault() }} className={`space-y-6 absolute ${!open ? "hidden" : "block"}  top-[60%] right-[3%] bg-white p-6 z-40 rounded-2xl`}>
+        <div className="flex justify-center items-center"> <h1 className="text-center font-bold text-3xl">Entity</h1>
+          <div onClick={handelentityopen} className="relative left-[30%] bg-violet-300 w-[50px] h-[30px] flex justify-center items-center rounded-2xl shadow-2xl"><X className="text-white" /></div>
+
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Call Back Event Name</label>
+            <select onChange={(e) => { setCallbackeventname(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" required>
+
+              <option selected value="payout_failed">payout_failed</option>
+              <option value="payout_pending">payout_pending</option>
+
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Call Back URL</label>
+            <input onChange={(e) => { setCallbackurl(e.target.value) }} type="text" name="url" placeholder="http://example" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" required />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <select onChange={(e) => { setStatus(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" required>
+
+              <option selected value="ACTIVE">ACTIVE</option>
+              <option value="INACTIVE">INACTIVE</option>
+
+            </select>
+          </div>
+
+        </div>
+
+
+
+        <div>
+          <button onClick={(e) => { setOpen(false) }} type="submit" className="w-full py-3 px-6 bg-violet-600 text-white font-medium rounded-lg shadow-sm hover:bg-violet-700 transition duration-300">
+            Post Entity
+          </button>
+        </div>
+      </form>
+
+      <div className="border flex justify-between border-gray-200 rounded-2xl bg-white mb-[20px] p-6 hover:shadow-xl transition-all duration-300">
+        <div className="flex flex-col">
+          <h2 className="text-lg font-bold text-gray-900 mb-2">Webhooks</h2>
+          <p className="text-sm text-gray-700">
+            Receive real-time callbacks for every transaction to automate your
+            workflows.{" "}
+            <a className="underline font-semibold text-indigo-600" href="">
+              Learn more
+            </a>
+          </p>
+        </div>
+
+        <button onClick={handelentityopen} className="px-4 py-1 mr-[50px] bg-orange-500 text-white rounded-lg shadow hover:bg-yellow-600 transition">
+          create a entity request
+        </button>
+
+
+
       </div>
+
+      <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-md overflow-hidden">
+        <thead className="text-[11px] text-gray-500 uppercase bg-[#f9f9f9] border-b border-gray-300">
+          <tr>
+            <th className="px-4 py-3">Corp id</th>
+            <th className="px-4 py-3">
+              <div className="flex items-center space-x-1">
+                <p>Callback event</p>
+                <div className="flex flex-col justify-center items-center leading-none">
+                  <svg
+                    className="-mb-[4px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    viewBox="0 -960 960 960"
+                    width="14"
+                    fill="#1f1f1f"
+                  >
+                    <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+                  </svg>
+                  <svg
+                    className="-mt-[4px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    viewBox="0 -960 960 960"
+                    width="14"
+                    fill="#1f1f1f"
+                  >
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                  </svg>
+                </div>
+              </div>
+            </th>
+            <th className="px-4 py-3">
+              <div className="flex items-center space-x-1">
+                <p>Callback Url</p>
+                <div className="flex flex-col justify-center items-center leading-none">
+                  <svg
+                    className="-mb-[4px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    viewBox="0 -960 960 960"
+                    width="14"
+                    fill="#dbdad7"
+                  >
+                    <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+                  </svg>
+                  <svg
+                    className="-mt-[4px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    viewBox="0 -960 960 960"
+                    width="14"
+                    fill="#1f1f1f"
+                  >
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                  </svg>
+                </div>
+              </div>
+            </th>
+            <th className="px-4 py-3">Date</th>
+
+            <th className="px-4 py-3">Status</th>
+            <th className="px-4 py-3">Action</th>
+          </tr>
+        </thead>
+
+
+
+        <tbody className="text-[13px] font-medium">
+          {entitycallbackdata?.map((entity, i) => (
+            <tr
+              key={i}
+              className="border-b border-gray-100 hover:bg-gray-50 transition"
+            >
+              <td className="px-4 py-4 align-top">
+                {entity.corp_id}
+              </td>
+
+              <td className="px-4 py-4">{entity.callback_event_name}</td>
+
+              <td className="px-4 py-4">
+                {
+                  entity.callback_url
+                }
+              </td>
+
+              <td className="px-4 py-4"> {
+                entity.create_on
+
+              }</td>
+
+              <td className="px-4 py-4">
+                {
+                  entity.status
+
+                }
+              </td>
+              <td className="px-4 py-4 flex gap-[5px]">
+                <button onClick={(e) => { handelentitydelete(entity) }} className="bg-red-500 p-2 text-white rounded-[5px]">DELETE</button>
+                <button className="bg-yellow-500 p-2 text-white rounded-[5px]">UPDATE</button>
+
+              </td>
+
+
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
     </div>
   );
 };
