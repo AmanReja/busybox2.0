@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Developertools = () => {
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const entitycallbackdata = useSelector((state) => state.entitycallback.entitycallback)
   console.log(10, entitycallbackdata);
@@ -36,21 +35,12 @@ const Developertools = () => {
 }
 
 
-  // const handelentitydelete = (entity) => {
-  //   dispatch(deleteentitycallbackevent(entity.corp_id,entity.callback_event_name))
-  // }
+  const handelentitydelete = (entity) => {
+    dispatch(deleteentitycallbackevent(entity.corp_id,entity.callback_event_name))
+  }
 
 
 
-
-  // const handelentityupadte = (entity) => {
-  //   setUpdatedcallevname(entity.callback_event_name)
-  //   setUpdatedcallevurl(entity.callback_url)
-
-
-  // }
-
-  console.log(updatedcallevname, updatedcallevurl);
 
 
 

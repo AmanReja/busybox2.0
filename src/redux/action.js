@@ -286,6 +286,7 @@ export const deleteentitycallbackevent = (corpid,eventname) => async (dispatch) 
 
   if (res.status===200) {
     alert("entity hasbeen deleted")
+    window.location.reload()
     
   }
 
@@ -294,7 +295,7 @@ export const deleteentitycallbackevent = (corpid,eventname) => async (dispatch) 
 };
 
 ///entity callback update///
-export const updateeteentitycallbackevent = (entdata,corpid,callbackeventname) => async (dispatch) => {
+export const updateeteentitycallbackevent = (entdata,corpid,callbackname) => async (dispatch) => {
   const token = localStorage.getItem("token") || {};
   const res = await fetch(
     `${baseUrl}/v1/user/entity-callback${id}`,
