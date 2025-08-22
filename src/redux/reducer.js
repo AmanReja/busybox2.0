@@ -131,7 +131,7 @@ export const entitycallbackReducer = (state = initialentitycallbackevent, action
     
     return{
       ...state,
-      entitycallback:[action.payload,...state.entitycallback]
+      entitycallback:[action.payload, ...state.entitycallback]
     }
 
   }
@@ -139,7 +139,7 @@ export const entitycallbackReducer = (state = initialentitycallbackevent, action
     
     return{
       ...state,
-      entitycallback:state.entitycallback.filter((entity) => entity.id !== action.payload)
+      entitycallback:state.entitycallback.filter((entity) => entity.id !== action.payload.id)
     }
 
   }

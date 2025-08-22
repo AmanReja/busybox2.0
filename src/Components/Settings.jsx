@@ -11,7 +11,11 @@ import card from "../assets/icons/card.png";
 import bank from "../assets/icons/bank.png";
 import user from "../assets/icons/user.png";
 
+
 const Settings = () => {
+
+
+ 
   
 
   return (
@@ -19,34 +23,7 @@ const Settings = () => {
       <main className="w-full h-full flex flex-col overflow-y-scroll overflow-x-hidden">
         <section className="w-full flex flex-col sm:flex-col  gap-[20px] mt-[20px] sm:min-h-[600px] 2xl:h-[780px]  sm:h-[600px] px-[2px] sm:px-[20px]">
        
-          <div className="flex mt-[10px]  w-full h-auto">
-            <div className="relative w-full h-[200px]   bg-gradient-to-r from-indigo-900 via-indigo-800 to-indigo-700 rounded-lg overflow-hidden shadow-2xl">
-              {/* YouTube Logo Section */}
-              <div className="absolute left-8 top-1/2 transform -translate-y-1/2 flex items-center gap-4">
-                <div className="bg-white/90 rounded-xl p-3 shadow-lg">
-                  <img className="h-8 w-8" src={confetti} alt="Confetti" />
-                </div>
-                <div className="flex flex-col">
-                  <h1 className="text-white sm:text-4xl text-3xl font-bold tracking-wide">
-                    Productive day it is!
-                  </h1>
-                  <p
-                    style={{ fontFamily: "Delius" }}
-                    className="text-white font-light text-xl"
-                  >
-                    {" "}
-                    Make work feel like a breeze
-                  </p>
-                </div>
-              </div>
-
-              {/* Spirit Characters */}
-            
-              {/* Subtle overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-            </div>
-          </div>
-
+         
           <header className="w-full h-[50px] sm:overflow-visible overflow-x-auto">
             <div className="flex h-[50px] items-center text-[15px] w-[600px] gap-[20px] text-gray-800">
               <NavLink

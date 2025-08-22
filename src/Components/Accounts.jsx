@@ -16,55 +16,34 @@ import tie from "../assets/icons/tie.png";
 import phone from "../assets/icons/phone.png";
 import mail from "../assets/icons/mail.png";
 import Subfooter from "./Subfooter";
+import {getone_user} from "../redux/action"
+import { useSelector, useDispatch } from "react-redux";
 
 const Accounts = () => {
 
-
-
   const [user,setUser]=useState([])
+  const dispatch = useDispatch();
+  const getoneuserdata = useSelector((state)=>state.getoneuser.getoneuser.user)
+  console.log(27,getoneuserdata);
 
-
-
-
-  const getone_user = async() => {
-    const token = localStorage.getItem("token") || {};
-    const res = await fetch(
-      `http://192.168.1.34:3000/v1/user/get-details`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+  useEffect(()=>{
+    
+    dispatch(getone_user())
+ 
   
-    if (res.status === 401) {
-      localStorage.removeItem("token");
-      window.location.href = "/";
-      return;
-    }
-    const data = await res.json();
-    setUser(data.user)
+  
+  },[dispatch])
+
   
 
-  
-   
 
-   
-  };
-
-
-  useEffect(()=>{getone_user()},[])
-
-  console.log(user);
 
 
   // const user = JSON.parse(localStorage.getItem("user")) || {};
 
   const content_card = [
     {
-      name: user.role,
+      name: getoneuserdata?.role,
       catagory: "Role",
       color: "bg-gradient-to-r from-lime-400 to-green-500",
       icon: (
@@ -120,7 +99,7 @@ const Accounts = () => {
       ),
     },
     {
-      name: user.email,
+      name:getoneuserdata?.email,
       catagory: "Email ID",
       color: "bg-gradient-to-r from-purple-500 to-indigo-500",
       icon: (
@@ -189,7 +168,7 @@ const Accounts = () => {
 
   const content_business = [
     {
-      name: user.company_id,
+      name: getoneuserdata?.company_id,
       catagory: "Business Name",
       color: "bg-gradient-to-r from-lime-400 to-green-500",
       icon: (
@@ -314,7 +293,7 @@ const Accounts = () => {
                 style={{ fontFamily: "Delius" }}
                 className="text-2xl font-extrabold drop-shadow-md "
               >
-                {user.name}
+                {""}
               </h1>
             </div>
 

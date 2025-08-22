@@ -9,7 +9,7 @@ export const ADDENTITY_CALLBACK = "ADDENTITY_CALLBACK";
 export const UPDATEENTITY_CALLBACK = "UPDATEENTITY_CALLBACK";
 export const DELETEENTITY_CALLBACK = "DELETEENTITY_CALLBACK";
 
-const baseUrl = "http://192.168.1.34:3000";
+const baseUrl = "http://localhost:3000";
 
 export const getall_ledgerwallet_data =
   (searchtr, trstatus,searchdate_start,searchdate_end,downloadexcl=false) => async (dispatch) => {
@@ -223,7 +223,7 @@ export const getentitycallbackevent = () => async (dispatch) => {
   dispatch({ type: "GETENTITY_CALLBACK", payload: data });
 };
 
-///entity callback add///
+///ent callback add///
 
 export const addentitycallbackevent = (entdata) => async (dispatch) => {
   const token = localStorage.getItem("token") || {};
@@ -261,7 +261,7 @@ export const addentitycallbackevent = (entdata) => async (dispatch) => {
 };
 
 
-///entity callback delete///
+///ent callback delete///////
 
 
 export const deleteentitycallbackevent = (corpid,eventname) => async (dispatch) => {
@@ -286,7 +286,7 @@ export const deleteentitycallbackevent = (corpid,eventname) => async (dispatch) 
 
   if (res.status===200) {
     alert("entity hasbeen deleted")
-    window.location.reload()
+    
     
   }
 
@@ -294,18 +294,18 @@ export const deleteentitycallbackevent = (corpid,eventname) => async (dispatch) 
   dispatch({ type: "DELETEENTITY_CALLBACK", payload: data });
 };
 
-///entity callback update///
-export const updateeteentitycallbackevent = (entdata,corpid,callbackname) => async (dispatch) => {
+///ent callback update//////
+export const updateeteentitycallbackevent = (upentdata,corpid,eventname,status) => async (dispatch) => {
   const token = localStorage.getItem("token") || {};
   const res = await fetch(
-    `${baseUrl}/v1/user/entity-callback${id}`,
+    `${baseUrl}/v1/user/entity-callback/${encodeURIComponent(corpid)}/${encodeURIComponent(eventname)}/${encodeURIComponent(status)}`,
     {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body:JSON.stringify(entdata)
+      body:JSON.stringify(upentdata)
     }
   );
 
@@ -324,4 +324,4 @@ export const updateeteentitycallbackevent = (entdata,corpid,callbackname) => asy
   dispatch({ type: "UPDATEENTITY_CALLBACK", payload: data });
 };
 
-///entity callback update///
+///ent callback update///

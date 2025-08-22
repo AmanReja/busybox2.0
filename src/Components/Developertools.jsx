@@ -2,16 +2,22 @@ import { React, useState, useEffect } from "react";
 import hand from "../assets/images/hand.png";
 import Subfooter from "./Subfooter";
 import { X } from "lucide-react"
-import { getentitycallbackevent, addentitycallbackevent, deleteentitycallbackevent } from "../redux/action";
+import { getentitycallbackevent, addentitycallbackevent, deleteentitycallbackevent, updateeteentitycallbackevent } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
 const Developertools = () => {
 
   const dispatch = useDispatch();
 
+
+
+
   const entitycallbackdata = useSelector((state) => state.entitycallback.entitycallback)
   console.log(10, entitycallbackdata);
- 
+
+
+
+
 
   useEffect(() => {
     dispatch(getentitycallbackevent())
@@ -19,24 +25,25 @@ const Developertools = () => {
   }, [dispatch])
 
 
+
   const [callbackeventname, setCallbackeventname] = useState("");
   const [callbackurl, setCallbackurl] = useState("")
-  const [updatedcallevname, setUpdatedcallevname] = useState("")
-  const [updatedcallevurl, setUpdatedcallevurl] = useState("")
-
-
+  const [isediting, setIsediting] = useState(false)
   const [status, setStatus] = useState("")
   const [open, setOpen] = useState(false)
+  const [entpra_corp, setEntpra_corp] = useState("")
+  const [entpra_envname, setEntpra_envname] = useState("")
+  const [entpra_envstatus, setEntpra_envstatus] = useState("")
 
 
   const handelentityopen = () => {
 
     setOpen((prev) => !prev)
-}
+  }
 
 
   const handelentitydelete = (entity) => {
-    dispatch(deleteentitycallbackevent(entity.corp_id,entity.callback_event_name))
+    dispatch(deleteentitycallbackevent(entity.corp_id, entity.callback_event_name))
   }
 
 
@@ -47,15 +54,88 @@ const Developertools = () => {
 
 
   const addentity = () => {
+    try {
 
-    const newEntity = {
-      callback_event_name: callbackeventname,
-      callback_url: callbackurl,
-      status: status
+      if (!callbackeventname || !callbackurl || !status) {
+        alert("all fields are required")
+      } else {
+
+
+        const newEntity = {
+          callback_event_name: callbackeventname,
+          callback_url: callbackurl,
+          status: status,
+
+        }; dispatch(addentitycallbackevent(newEntity))
+
+      }
+    } catch (error) {
+      alert(error)
+
+    } finally {
+      setCallbackeventname("")
+      setCallbackurl("")
+      setStatus("")
+
     }
 
-    dispatch(addentitycallbackevent(newEntity))
- }
+
+
+
+
+
+  }
+
+
+  const update = (entity) => {
+    setCallbackeventname(entity.callback_event_name)
+    setCallbackurl(entity.callback_url)
+    setStatus(entity.status)
+    setIsediting(true)
+    setOpen(true)
+    setEntpra_corp(entity.corp_id)
+    setEntpra_envname(entity.callback_event_name)
+    setEntpra_envstatus(entity.status)
+   
+    
+  };
+
+
+
+  const handelupdate = () => {
+    // console.log(55,entity.corp_id,entity.callback_event_name, entity.status);
+
+    try {
+    
+     
+      
+      
+     
+
+      const oldEntity = {
+
+          new_callback_event_name: callbackeventname,
+          new_callback_url: callbackurl,
+          new_status: status,
+
+      };
+      dispatch(updateeteentitycallbackevent(oldEntity, entpra_corp, entpra_envname, entpra_envstatus))
+    } catch (error) {
+      alert(error)
+    } finally {
+
+      setCallbackeventname("")
+      setCallbackurl("")
+      setStatus("")
+      setIsediting(false)
+      setEntpra_corp("")
+    setEntpra_envname("")
+    setEntpra_envstatus("")
+    }
+
+
+
+  }
 
 
 
@@ -65,12 +145,11 @@ const Developertools = () => {
     <div className="w-full h-auto font-[Montserrat] space-y-6">
       {/* Header Card */}
       <div className="relative overflow-hidden rounded-xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-700 shadow-2xl">
-        {/* Animated Grid Background */}
+
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:40px_40px] animate-[slowpan_20s_linear_infinite]"></div>
 
         {/* Glow Overlay */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500/30 blur-3xl rounded-full -z-10"></div>
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-purple-500/20 blur-3xl rounded-full -z-10"></div>
+
 
         {/* Text Content */}
         <div className="flex flex-col gap-4 text-center md:text-left max-w-2xl">
@@ -112,7 +191,7 @@ const Developertools = () => {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 transition">
+          <button className="px-4 py-2 bg-violet-500 text-white rounded-lg shadow hover:bg-violet-700 transition">
             Regenerate Token
           </button>
           <div className="flex border border-gray-300 rounded-lg overflow-hidden">
@@ -135,7 +214,7 @@ const Developertools = () => {
         </div>
       </div>
 
-      <form onSubmit={(e) => { addentity(e), e.preventDefault() }} className={`space-y-6 absolute ${!open ? "hidden" : "block"}  top-[60%] right-[3%] bg-white p-6 z-40 rounded-2xl`}>
+      <form onSubmit={(e) => { isediting ? handelupdate(e) : addentity(e), e.preventDefault() }} className={`space-y-6 absolute ${!open ? "hidden" : "block"}  top-[60%] right-[3%] bg-white p-6 z-40 rounded-2xl`}>
         <div className="flex justify-center items-center"> <h1 className="text-center font-bold text-3xl">Entity</h1>
           <div onClick={handelentityopen} className="relative left-[30%] bg-violet-300 w-[50px] h-[30px] flex justify-center items-center rounded-2xl shadow-2xl"><X className="text-white" /></div>
 
@@ -146,7 +225,7 @@ const Developertools = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Call Back Event Name</label>
-            <select onChange={(e) => { setCallbackeventname(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" required>
+            <select value={callbackeventname} onChange={(e) => { setCallbackeventname(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" >
 
               <option selected value="payout_failed">payout_failed</option>
               <option value="payout_pending">payout_pending</option>
@@ -156,11 +235,11 @@ const Developertools = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Call Back URL</label>
-            <input onChange={(e) => { setCallbackurl(e.target.value) }} type="text" name="url" placeholder="http://example" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" required />
+            <input value={callbackurl} onChange={(e) => { setCallbackurl(e.target.value) }} type="text" name="url" placeholder="http://example" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"  />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-            <select onChange={(e) => { setStatus(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" required>
+            <select value={status} onChange={(e) => { setStatus(e.target.value) }} name="callbackeventname" className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 bg-white" >
 
               <option selected value="ACTIVE">ACTIVE</option>
               <option value="INACTIVE">INACTIVE</option>
@@ -173,7 +252,7 @@ const Developertools = () => {
 
 
         <div>
-          <button onClick={(e) => { setOpen(false) }} type="submit" className="w-full py-3 px-6 bg-violet-600 text-white font-medium rounded-lg shadow-sm hover:bg-violet-700 transition duration-300">
+          <button type="submit" className="w-full py-3 px-6 bg-violet-600 text-white font-medium rounded-lg shadow-sm hover:bg-violet-700 transition duration-300">
             Post Entity
           </button>
         </div>
@@ -191,7 +270,7 @@ const Developertools = () => {
           </p>
         </div>
 
-        <button onClick={handelentityopen} className="px-4 py-1 mr-[50px] bg-orange-500 text-white rounded-lg shadow hover:bg-yellow-600 transition">
+        <button onClick={handelentityopen} className="px-4 py-1 mr-[50px] bg-blue-700 text-white rounded-lg shadow hover:bg-violet-700 transition">
           create a entity request
         </button>
 
@@ -297,7 +376,7 @@ const Developertools = () => {
               </td>
               <td className="px-4 py-4 flex gap-[5px]">
                 <button onClick={(e) => { handelentitydelete(entity) }} className="bg-red-500 p-2 text-white rounded-[5px]">DELETE</button>
-                <button className="bg-yellow-500 p-2 text-white rounded-[5px]">UPDATE</button>
+                <button onClick={(e) => { update(entity) }} className="bg-yellow-500 p-2 text-white rounded-[5px]">UPDATE</button>
 
               </td>
 
